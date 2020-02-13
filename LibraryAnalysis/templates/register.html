@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style type="text/css">
+    body{
+         background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .registers{
+
+            margin-top:150px;
+            margin-left:50px;
+            padding:10px;
+            width:500px;
+        }
+
+        .registers table{
+            width:40em;
+            text-align:center;
+            border-collapse:collapse;
+            border-spacing:1px;
+            background:;
+        }
+
+        .registers table tr th{
+        padding:20px;
+        }
+        .registers table tr td{
+        background:rgb(255, 87, 51);
+        padding:10px;
+        }
+        
+ </style>
+</head>
+<body>
+<div>
+<form method="post">
+    {% csrf_token %}
+<table border='1'>
+    <tr>
+        <td>User Name </td>
+        <td style='width:100px'>{{form.username}}</td>
+    </tr><tr>
+        <td>Password</td>
+        <td>{{form.password}}</td>
+    </tr><tr>
+        <td>Contact Number</td>
+        <td>{{form.contactnum}}</td>
+    </tr><tr>
+        <td>Email Id </td>
+        <td>{{form.email}}</td>
+    </tr>
+    <tr>
+            <td style="text-align:center;" colspan="2">
+            <input type="submit" name="submit" value="SUBMIT" style="background:red;color:white"></td>
+        </tr>
+</table>
+</form>
+    </div>
+{% comment %} <div class="registerimage"></div> {% endcomment %}
+{% comment %} <div class="regi"></div> {% endcomment %}
+
+</body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <style type="text/css">
+    body {font:12px/1.4 Verdana,Arial; background:#eee; height:100%; margin:25px 0; padding:0}
+h1 {font:24px Georgia,Verdana; margin:0}
+h2 {font-size:12px; font-weight:normal; font-style:italic; margin:0 0 20px}
+p {margin-top:0}
+ul {margin:0; padding-left:20px}
+
+#testdiv {width:600px; margin:0 auto; border:1px solid #ccc; padding:20px 25px; background:#fff}
+
+#tinybox {position:absolute; display:none; padding:10px; background:#fff url(images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
+#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
+#tinycontent {background:#fff}
+
+.button {font:14px Georgia,Verdana; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#eee; cursor:pointer}
+.button:hover {border:1px solid #bbb; background:#e3e3e3}
+    </style>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    {% load static %}
+    {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}" /> {% endcomment %}
+
+{% comment %}</head>
+
+<body>
+    <form method="POST" class="post-form" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="container">
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <h3>Enter Details</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">User Type:</label>
+                <div class="col-sm-4"><input type="text">
+                    {{ form.usertype }}</input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">User Name:</label>
+                <div class="col-sm-4"><input type="text" value="{{ form.username }}">
+                    </input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-4"><input type="text" value="{{ form.password }}">
+                    </input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Contact number:</label>
+                <div class="col-sm-4"><input type="text" value="{{ form.contactnum }}">
+                    </input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Email Id:</label>
+                <div class="col-sm-4"><input type="text" value="{{ form.email }}">
+                    </input>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html> {% endcomment %}

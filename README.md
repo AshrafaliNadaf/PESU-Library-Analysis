@@ -1,2 +1,2 @@
 "# miniproject" 
-u can edit the files
+Keep the changes updated, compare and update

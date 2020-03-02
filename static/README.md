@@ -4,7 +4,7 @@
  ![version](https://img.shields.io/badge/version-2.1.1-blue.svg)  ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/material-dashboard.svg?maxAge=2592000)](https://github.com/creativetimofficial/material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/material-dashboard.svg?maxAge=2592000)](https://github.com/creativetimofficial/material-dashboard/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim-general/Lobby) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
 
 
-![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-dashboard-html/material-dashboard-free.gif)
+![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-static/master/material-dashboard-html/material-dashboard-free.gif)
 
 Material Dashboard is a free Material Bootstrap Admin with a fresh, new design inspired by Google's Material Design. We are very excited to introduce our take on the material concepts through an easy to use and beautiful set of components. Material Dashboard was built over the popular Bootstrap framework and it comes with a couple of third-party plugins redesigned to fit in with the rest of the elements.
 
@@ -78,7 +78,7 @@ Within the download you'll find the following directories and files:
 
 ```
 material-dashboard/
-├── assets/
+├── static/
 |   ├── css/
 |   |   ├── bootstrap.min.css
 |   |   ├── material-dashboard.css

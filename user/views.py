@@ -23,7 +23,7 @@ def register(request):
         forms = RegisterForms(request.POST)
         if forms.is_valid():
             forms.save()
-            return redirect('login')
+        #   return redirect('register')
     else:
         forms = RegisterForms()
     return render(request, 'register.html')
@@ -40,6 +40,14 @@ def register(request):
 
 def home(request):
     return render(request, 'dashboard.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')
+
+
+def newbook(request):
+    return render(request, 'newbook.html')
 
 
 def mydetails(request):

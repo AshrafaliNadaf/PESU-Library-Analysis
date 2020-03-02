@@ -22,7 +22,9 @@ from user import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.login,name="login"),
-    path('register',views.register, name="register"),
-    path('home',views.home, name="home")
+    path('', views.login, name="login"),
+    path('register', views.register, name="register"),
+    path('home', views.home, name="home"),
+    path('profile/', views.profile, name='profile'),
+    path('newbook/', views.newbook, name='newbook'),
 ]

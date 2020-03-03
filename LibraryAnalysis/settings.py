@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'LibraryAnalysis.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'pesu',
+'NAME': 'libraryanalysis',
 'USER': 'root',
 'PASSWORD': "",
 'HOST': "",

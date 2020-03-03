@@ -28,14 +28,8 @@ def register(request):
         forms = RegisterForms()
     return render(request, 'register.html')
 
-# def login(request):
-#     if request.method == "POST":
-#         if request.method == "POST":
-#             usid = request.POST.get('name')
-#             pswd = request.POST.get('password')
-#             if usid == 'admin' and pswd == 'admin':
-#                 return redirect('user_page')
-#     return render(request,'home.html')
+def visitors(request):
+    return render(request,'visitors.html')
 
 
 def home(request):

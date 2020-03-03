@@ -34,13 +34,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="#">
               <i class="material-icons">content_paste</i>
               <p>Book issue</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="#">
               <i class="material-icons">person</i>
               <p>visitors</p>
             </a>
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="#">
               <i class="material-icons">bubble_chart</i>
               <p>Reports</p>
             </a>
@@ -93,7 +93,7 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                   <span class="notification">5</span>
                   <p class="d-lg-none d-md-block">
@@ -129,30 +129,37 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-11">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Book Request</h4>
-                  <p class="card-category">Enter New Book Details</p>
+                  <h4 class="card-title">Book Request Form</h4>
+                  <p class="card-category">Enter Details:</p>
                 </div>
                 <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-5">
+                  <form method="post">
+                    <div action="" class="row">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">ISBN </label>
+                          <label>Dear sir,</label>
+                          <div class="form-group">
+                            <label class="bmd-label-floating">We need the following book/s for reference. We request you to procure the same at the earliest.</label>
+                            {% comment %} <textarea class="form-control" rows="5"></textarea> {% endcomment %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Author/s Name</label>
                           <input type="text" class="form-control" >
                         </div>
                       </div>
-                      <div class="col-md-3">
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Book Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Author Name</label>
+                          <label class="bmd-label-floating">Title</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
@@ -166,50 +173,32 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
+                          <label class="bmd-label-floating">ISBN</label>
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
                           <label class="bmd-label-floating">Edition</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Adress</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
+                          <label class="bmd-label-floating">Price</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
+                          <label class="bmd-label-floating">No.of Copies</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label>About Me</label>
-                          <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                            <textarea class="form-control" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    
                     <button type="submit" class="btn btn-primary pull-right">Request</button>
                     <div class="clearfix"></div>
                   </form>

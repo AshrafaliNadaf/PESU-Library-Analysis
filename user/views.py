@@ -43,6 +43,9 @@ def profile(request):
 def newbook(request):
     return render(request, 'newbook.html')
 
+def bookir(request):
+        return render(request,'bookir.html')
+
 
 def mydetails(request):
     ()

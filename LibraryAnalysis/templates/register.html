@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -17,7 +19,7 @@
 </head>
 
 <body class="">
-{% csrf_token %}
+
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/sidebar-1.jpg">
       <!--
@@ -39,9 +41,9 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{% url 'bookir' %}">
               <i class="material-icons">content_paste</i>
-              <p>Book issue</p>
+              <p>Book Issue/Return</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -141,34 +143,28 @@
                   <p class="card-category">Complete your profile</p>
                 </div>
                 <div class="card-body">
-                  <form method="POST">
-                  {% csrf_token %}
-                    {% comment %} <div class="column">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">PES University</label>
-                          <input type="text" class="form-control" disabled>
-                        </div>
-                      </div> 
-                    </div> {% endcomment %}
+                {% block content %}
+                  <form  method="post" autocomplete="off">
+                    {% csrf_token %}
                           <label class="bmd-label-floating">UserType</label>
-                          <input type="text" class="form-control">{{form.usertype}}</input>
+                           {{forms.usertype}}
                     
                           <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control">{{form.username}}</input>
-                       
+                          {% comment %} <input type="text" class="form-control">{{forms.username}}</input> {% endcomment %}
+                          {{forms.username}}
                           <label class="bmd-label-floating">Password</label>
-                          <input type="text" class="form-control">{{form.password}}</input>
-                        
-                          <label class="bmd-label-floating">Email address</label>
-                          <input type="email" class="form-control">{{form.email}}</input>
-                       
+                          {% comment %} <input type="text" class="form-control">{{forms.password}}</input> {% endcomment %}
+                          {{forms.password}}
+
                           <label class="bmd-label-floating">Contact number</label>
-                          <input type="text" class="form-control">{{form.contactnum}}</input>
-                        
-                    <button type="submit" class="btn btn-primary pull-right">Create Profile</button>
-                    <div class="clearfix"></div>
+                          {% comment %} <input type="text" class="form-control">{{forms.contactnum}}</input> {% endcomment %}
+                          {{forms.contactnum}}
+                          <label class="bmd-label-floating">Email address</label>
+                          {% comment %} <input type="email" class="form-control">{{forms.email}}</input> {% endcomment %}
+                       {{forms.email}}     
+                    <button type="submit" class="btn btn-success pull-right">Create Profile</button>
                   </form>
+                  {% endblock content %}
                 </div>
               </div>
             </div>
@@ -236,6 +232,7 @@
   <script src="../static/js/plugins/bootstrap-notify.js"></script>
   <script src="../static/js/material-dashboard.js?v=2.1.1" type="text/javascript"></script>
   <script src="../static/demo/demo.js"></script>
+
 </body>
 
 </html>

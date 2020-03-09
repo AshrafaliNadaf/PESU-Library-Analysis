@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from user.forms import RegisterForms
 from .models import loginmodel
+#m django.views.generic.edit import CreateView, UpdateView, DeleteView
+# from django.core.urlresolvers import reverse_lazy
 # Create your views here.
 
 

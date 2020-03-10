@@ -140,29 +140,19 @@
               <div class="card">
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">Register Profile</h4>
-                  <p class="card-category">Complete your profile</p>
+                  <p class="card-category">Details of profile</p>
                 </div>
                 <div class="card-body">
                 {% block content %}
                   <form  method="post" autocomplete="off">
                     {% csrf_token %}
-                          <label class="bmd-label-floating">UserType</label>
-                           {{forms.usertype}}
-                    
-                          <label class="bmd-label-floating">Username</label>
-                          {% comment %} <input type="text" class="form-control">{{forms.username}}</input> {% endcomment %}
-                          {{forms.username}}
-                          <label class="bmd-label-floating">Password</label>
-                          {% comment %} <input type="text" class="form-control">{{forms.password}}</input> {% endcomment %}
-                          {{forms.password}}
-
-                          <label class="bmd-label-floating">Contact number</label>
-                          {% comment %} <input type="text" class="form-control">{{forms.contactnum}}</input> {% endcomment %}
-                          {{forms.contactnum}}
-                          <label class="bmd-label-floating">Email address</label>
-                          {% comment %} <input type="email" class="form-control">{{forms.email}}</input> {% endcomment %}
-                       {{forms.email}}     
-                    <button type="submit" class="btn btn-success pull-right">Create Profile</button>
+                    {% comment %} {{form|crispy}} {% endcomment %}
+                      {{forms.usertype|as_crispy_field}}
+                      {{forms.username|as_crispy_field}}
+                      {{forms.password|as_crispy_field}}
+                      {{forms.contactnum|as_crispy_field}}
+                      {{forms.email|as_crispy_field}}     
+                    <button type="submit" class="btn btn-success pull-right">Submit</button>
                   </form>
                   {% endblock content %}
                 </div>
@@ -171,41 +161,6 @@
           </div>
         </div>
       </div>
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Licenses
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-          </div>
-        </div>
-      </footer>
     </div>
   </div>
   <!--   Core JS Files   -->

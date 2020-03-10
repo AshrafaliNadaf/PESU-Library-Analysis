@@ -18,18 +18,27 @@ def login(request):
     return render(request, 'login.html')
 
 
-def register(request):
-    if request.method == "POST":
-        forms = RegisterForms(request.POST)
-        print("posted")
-        if forms.is_valid():
-            print("validated")
-            forms.save()
-            return redirect('register')
+def register(request, id=0):
+    if request.method == "GET":
+        print("entered if")
+        if id == 0:    
+            forms = RegisterForms()
+        else:
+            print("entered else")
+            user = loginmodel.objects.get(pk=id)
+            forms = RegisterForms(instance=user)
+        return render(request, "register.html",{'forms':forms})
     else:
-        forms = RegisterForms()
-        print("else")
-    return render(request, "register.html",{'forms':forms})
+        if id == 0:
+            forms = RegisterForms(request.POST)
+        else:
+            user = loginmodel.objects.get(pk=id)
+            forms = RegisterForms(request.POST,instance=user)
+        if forms.is_valid():
+            forms.save()
+        return redirect('profile')
+
+
 
 def visitors(request):
     return render(request,'visitors.html')
@@ -40,7 +49,8 @@ def home(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    context = {'profile_list':loginmodel.objects.all()}
+    return render(request, "profile.html", context)
 
 
 def newbook(request):
@@ -52,7 +62,6 @@ def bookir(request):
 
 def mydetails(request):
     ()
-
 
 def update_details(request):
     ()

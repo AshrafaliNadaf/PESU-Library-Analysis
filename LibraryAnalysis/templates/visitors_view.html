@@ -1,0 +1,24 @@
+{% extends "visitors.html" %}
+{% block content %}
+    <table class="table borderless">
+        <thead class="border-bottom font-weight-bold">
+            <tr>
+                <td>Students</td>
+                <td>Staff</td>
+                <td>Visitors</td>
+    
+        <tbody>
+            {% for visitors in visitors_list %}
+            <tr>
+                <td>{{visitors.students}}</td>
+                <td>{{visitors.staff}}</td>
+                <td>{{visitors.visitors}}</td>
+    
+            </tr>
+            {% endfor %}
+        </tbody>
+    
+        </tr>
+        </thead>
+    </table>
+{% endblock %}

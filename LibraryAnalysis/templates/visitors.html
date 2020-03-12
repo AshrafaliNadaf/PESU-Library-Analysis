@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,37 +142,31 @@
                   <h4 class="card-title">VISITORS</h4>
                   <p class="card-category">Enter Visitors Details</p>
                 </div>
+                
                 <div class="card-body">
-                  <form>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="bmd-label-floating">No. of Students </label>
-                        <input type="text" class="form-control">
-                      </div>
+                  
+                  <form method="post" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="col-md-6">
+                      {{forms.students|as_crispy_field}}
+                      {{forms.staff|as_crispy_field}}
+                      {{forms.visitors|as_crispy_field}}
                     </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="bmd-label-floating">No. of Staff </label>
-                        <input type="text" class="form-control">
-                      </div>
+                      
+                    <div class="col-md-8 float-right">
+                      <button type="submit" class="btn btn-primary float-none">SUBMIT</button>
+
                     </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="bmd-label-floating">No.of Guest </label>
-                        <input type="text" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary pull-right">SUBMIT</button>
-                  <div class="clearfix"></div>
+                    <div class="clearfix"></div>
                   </form>
+                
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+     
     </div>
     <!--   Core JS Files   -->
     <script src="../static/js/core/jquery.min.js"></script>
@@ -199,3 +195,4 @@
 </body>
 
 </html>
+{% endblock content %}

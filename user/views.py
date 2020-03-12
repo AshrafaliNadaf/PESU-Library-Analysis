@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import RegisterForms
-from .models import loginmodel
+from user.forms import RegisterForms,VisitorForms
+from .models import loginmodel, visitors
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
@@ -21,21 +21,56 @@ def login(request):
     return render(request, 'login.html')
 
 
+<<<<<<< HEAD
 def register(request):
     if request.method == "POST":
         forms = RegisterForms(request.POST)
-        print("posted")
         if forms.is_valid():
-            print("validated")
             forms.save()
             return redirect('register')
     else:
         forms = RegisterForms()
-        print("else")
     return render(request, "register.html",{'forms':forms})
+=======
+def register(request, id=0):
+    if request.method == "GET":
+        print("entered if")
+        if id == 0:    
+            forms = RegisterForms()
+        else:
+            print("entered else")
+            user = loginmodel.objects.get(pk=id)
+            forms = RegisterForms(instance=user)
+        return render(request, "register.html",{'forms':forms})
+    else:
+        if id == 0:
+            forms = RegisterForms(request.POST)
+        else:
+            user = loginmodel.objects.get(pk=id)
+            forms = RegisterForms(request.POST,instance=user)
+        if forms.is_valid():
+            forms.save()
+        return redirect('profile')
+
+
+>>>>>>> bf553a589dfdec5b5719e8df52dd7ff84761233b
 
 def visitors(request):
-    return render(request,'visitors.html')
+    if request.method == "GET":
+        forms = VisitorForms()
+        return render(request, "visitors.html",{'forms':forms})
+        
+    else:
+        forms = VisitorForms(request.POST)
+        if forms.is_valid():
+            forms.save()
+        return redirect('visitors_list')
+        
+
+def visitors_list(request):
+    context = {'visitors_list':visitors.objects.all()}
+    return render(request, "visitors.html", context)
+
 
 
 def home(request):
@@ -43,7 +78,8 @@ def home(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    context = {'profile_list':loginmodel.objects.all()}
+    return render(request, "profile.html", context)
 
 
 def newbook(request):
@@ -55,7 +91,6 @@ def bookir(request):
 
 def mydetails(request):
     ()
-
 
 def update_details(request):
     ()

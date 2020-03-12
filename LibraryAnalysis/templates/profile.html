@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -17,7 +19,7 @@
 </head>
 
 <body class="">
-{% csrf_token %}
+
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/sidebar-1.jpg">
       <!--
@@ -150,18 +152,51 @@
                 </div>
                 </div>
                </div> 
-               <div class="column" style="padding:20px">
+               <div class="column" >
                <div class="card">
                 <div class="card-header card-header-primary">
-                <h4 class="card-title">Update</h4>
+                <h4 class="card-title">Users:</h4>
                 </div>
                 <div class="card-body">
                 <div class="column">
-                  <a href="{% url 'register' %}" class="btn btn-primary btn-round">Register</a>
+                  {% comment %} <a href="{% url 'register' %}" class="btn btn-primary btn-round">Register</a> {% endcomment %}
                   </div>
+                  
+                  {% block content %}
+                  <form action="" method="GET">
+                  {% csrf_token %}
+                  <table class="table table-borderless">
+                    <thead class="border-bottom font-weight-bold">
+                      <tr>
+                        <td>
+                          <a href="{% url 'register' %}" class="btn btn-outline-success pull-right">
+                              <i class="fa fa-plus">Add</i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>User Name</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for user in profile_list %}
+                      <tr>
+                        <td>{{user.username}}</td>
+                        <td>
+                          <a href="{% url 'users_update' id=user.id  %}" class="btn btn-secondary px=0">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </body>
+                  </table>
+                  </form>
+                  {% endblock content %}
                   <div class="column">
-                  <a href="" class="btn btn-primary btn-round">Change Password</a>
+                  {% comment %} <a href="" class="btn btn-primary btn-round">Change Password</a> {% endcomment %}
                   </div>
+                  
                 </div>
                 </div>
               </div>

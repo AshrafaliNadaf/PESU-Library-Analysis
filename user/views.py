@@ -21,15 +21,6 @@ def login(request):
     return render(request, 'login.html')
 
 
-def register(request):
-    if request.method == "POST":
-        forms = RegisterForms(request.POST)
-        if forms.is_valid():
-            forms.save()
-            return redirect('register')
-    else:
-        forms = RegisterForms()
-    return render(request, "register.html",{'forms':forms})
 def register(request, id=0):
     if request.method == "GET":
         print("entered if")
@@ -63,12 +54,6 @@ def visitors(request):
             forms.save()
         return redirect('visitors')
         
-
-def visitors_list(request):
-    context = {'visitors_list':visitors.objects.all()}
-    return render(request, "visitors.html", context)
-
-
 
 def home(request):
     return render(request, 'dashboard.html')

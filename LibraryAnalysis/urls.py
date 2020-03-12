@@ -29,5 +29,4 @@ urlpatterns = [
     path('newbook/', views.newbook, name='newbook'),
     path('visitors/', views.visitors, name='visitors'),
     path('bookir',views.bookir,name="bookir"),
-    path('visitors_list',views.visitors_list),
 ]

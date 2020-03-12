@@ -21,7 +21,6 @@ def login(request):
     return render(request, 'login.html')
 
 
-<<<<<<< HEAD
 def register(request):
     if request.method == "POST":
         forms = RegisterForms(request.POST)
@@ -31,7 +30,6 @@ def register(request):
     else:
         forms = RegisterForms()
     return render(request, "register.html",{'forms':forms})
-=======
 def register(request, id=0):
     if request.method == "GET":
         print("entered if")
@@ -53,7 +51,6 @@ def register(request, id=0):
         return redirect('profile')
 
 
->>>>>>> bf553a589dfdec5b5719e8df52dd7ff84761233b
 
 def visitors(request):
     if request.method == "GET":
@@ -64,7 +61,7 @@ def visitors(request):
         forms = VisitorForms(request.POST)
         if forms.is_valid():
             forms.save()
-        return redirect('visitors_list')
+        return redirect('visitors')
         
 
 def visitors_list(request):

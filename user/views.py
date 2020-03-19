@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import RegisterForms
-from .models import loginmodel
+from user.forms import RegisterForms,VisitorForms
+from .models import loginmodel, visitors
+#m django.views.generic.edit import CreateView, UpdateView, DeleteView
+# from django.core.urlresolvers import reverse_lazy
+# Create your views here.
 
 # Create your views here.
 
@@ -41,8 +44,16 @@ def register(request, id=0):
 
 
 def visitors(request):
-    return render(request,'visitors.html')
-
+    if request.method == "GET":
+        forms = VisitorForms()
+        return render(request, "visitors.html",{'forms':forms})
+        
+    else:
+        forms = VisitorForms(request.POST)
+        if forms.is_valid():
+            forms.save()
+        return redirect('visitors')
+        
 
 def home(request):
     return render(request, 'dashboard.html')

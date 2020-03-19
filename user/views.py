@@ -47,7 +47,6 @@ def visitors(request):
 def home(request):
     return render(request, 'dashboard.html')
 
-
 def profile(request):
     context = {'profile_list':loginmodel.objects.all()}
     return render(request, "profile.html", context)

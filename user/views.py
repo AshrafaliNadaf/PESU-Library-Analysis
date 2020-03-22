@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from user.forms import RegisterForms,VisitorForms
-from .models import loginmodel, visitors
+from .models import loginmodel, visitorsmodel,bookirmodel
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
@@ -15,6 +15,7 @@ def login(request):
         try:
             check = loginmodel.objects.get(username=usid, password=pswd)
             request.session['username'] = check.id
+
             return redirect('home')
         except:
             pass
@@ -67,7 +68,9 @@ def newbook(request):
     return render(request, 'newbook.html')
 
 def bookir(request):
-        return render(request,'bookir.html')
+    return render(request, 'bookir.html')
+
+        
 
 
 def mydetails(request):

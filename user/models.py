@@ -8,7 +8,17 @@ class loginmodel(models.Model):
     contactnum=models.BigIntegerField()
     email=models.EmailField(max_length=400)
 
-class visitors(models.Model):
+class visitorsmodel(models.Model):
     students=models.CharField(max_length=5)
     staff=models.CharField(max_length=5)
     visitors=models.CharField(max_length=5)
+
+class departments(models.Model):
+    deptname=models.CharField(max_length=50)
+
+class bookirmodel(models.Model):
+    deptname=models.ForeignKey(departments,on_delete=models.CASCADE)
+    date=models.DateField()
+    bookissue=models.IntegerField()
+    bookreturn=models.IntegerField()
+    bookrenew=models.IntegerField()

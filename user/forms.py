@@ -1,5 +1,5 @@
 from django import forms
-from user.models import loginmodel,visitors
+from user.models import loginmodel,visitorsmodel,bookirmodel
 
 class RegisterForms(forms.ModelForm):
     class Meta:
@@ -20,5 +20,10 @@ class RegisterForms(forms.ModelForm):
         
 class VisitorForms(forms.ModelForm):
     class Meta:
-        model=visitors
+        model=visitorsmodel
         fields=("students","staff","visitors")
+
+# class bookirForm(forms.ModelForm):
+#     class Meta:
+#         model=bookirmodel
+#         fields=("deptname","date","bookissue","bookreturn","bookrenew")

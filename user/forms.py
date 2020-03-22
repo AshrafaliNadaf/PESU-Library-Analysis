@@ -11,6 +11,7 @@ class RegisterForms(forms.ModelForm):
             'contactnum': 'Contact Number',
             'email':'Email'
         }
+        
         def __init__(self, *args, **kwargs):
             super(RegisterForms, self).__init__(*args, **kwargs)
             # self.fields['department'].empty_label = "Select"

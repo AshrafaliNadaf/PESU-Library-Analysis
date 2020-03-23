@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import RegisterForms,VisitorForms
-from .models import loginmodel, visitorsmodel,bookirmodel
+from user.forms import RegisterForms,VisitorForms,bookirForm
+from .models import loginmodel,visitorsmodel,bookirmodel
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
@@ -68,7 +68,17 @@ def newbook(request):
     return render(request, 'newbook.html')
 
 def bookir(request):
-    return render(request, 'bookir.html')
+    if request.method == "GET":
+            print("entered if")
+            forms = bookirForm()
+            return render(request, "bookir.html",{'forms':forms})
+        
+    else:
+        print("entered else")
+        forms = bookirForm(request.POST)
+        if forms.is_valid():
+                forms.save()
+        return redirect('bookir')  
 
         
 

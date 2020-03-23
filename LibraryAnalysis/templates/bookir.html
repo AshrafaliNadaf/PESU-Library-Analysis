@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -138,10 +140,10 @@
                   <h4 class="card-title ">Book Issue/Return</h4>
                 </div>
                 <div class="card-body">              
-                  <form class="form-inline" role="form">
+                  <!-- <form class="form-inline" role="form"> -->
                     <div class="row">
                       <div class="col-md-4">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <select id = "myList" class="form-control" style="margin-right: 15px"  width="5px">
                           <option value = "0" >Department</option>
                           <option value = "1" >CS</option>
@@ -159,38 +161,49 @@
                           <option value = "13"  >MCA</option>
                           <option value = "14"  >Others</option>
                           </select>
-                        </div>
+                        </div> -->
                       </div>
-                      <div class="col-md-4">
+                      <!-- <div class="col-md-4">
                         <div class="form-group">
                           <input type="date" id="date-picker-example" class="form-control datepicker" style="margin-right:15px "> 
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
+                      <!-- <div class="col-md-3"> -->
+                        <!-- <div class="form-group">
                           <label class="bmd-label-floating">No. of Book Issue</label>
                           <input type="number" class="form-control" id="email" style="margin-right:15px ">
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">NO. of Book Returned</label>
                           <input type="number" class="form-control" id="num"style="margin-right:15px ">
                         </div>
-                      </div>
-                      <div class="col-md-3">
+                      </div> -->
+                      <!-- <div class="col-md-3">
                         <div class="form-group">
                           <label class="bmd-label-floating">Renewed Book count:</label>
                           <input type="number" class="form-control" id="num"style="margin-right:15px ">
                         </div>
-                      </div>
+                      </div> -->
                     <div class="col-md-3">
-                      <button type="submit" class="btn btn-primary pull-right" >Submit</button>
-                    </div>
+                                {% block content %}
+                                  <form  method="POST" autocomplete="off" >
+                                    {% csrf_token %}
+                                    {% comment %} {{form|crispy}} {% endcomment %}
+                                      {{forms.deptname|as_crispy_field}}
+                                      <input type="date" id="date-picker-example" class="form-control datepicker" style="margin-right:15px "> 
+                                      {{forms.bookissue|as_crispy_field}}
+                                      {{forms.bookreturn|as_crispy_field}}
+                                      {{forms.bookrenew|as_crispy_field}}     
+                                    <button type="submit" class="btn btn-success pull-right">Submit</button>
+                                  </form>
+                                {% endblock content %}
+                     </div>
                     </div>	
-                  </form>
+                  <!-- </form> -->
                 </div>
               </div>
               <div class="card card-plain">

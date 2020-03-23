@@ -16,11 +16,9 @@ class visitorsmodel(models.Model):
 
 class departments(models.Model):
     deptname=models.CharField(max_length=50)
-    username = models.ForeignKey(loginmodel, default=None,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.deptname
-
 
 class bookirmodel(models.Model):
     deptname=models.ForeignKey(departments,on_delete=models.CASCADE)

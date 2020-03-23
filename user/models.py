@@ -24,7 +24,7 @@ class departments(models.Model):
 
 class bookirmodel(models.Model):
     deptname=models.ForeignKey(departments,on_delete=models.CASCADE)
-    usertype = models.ForeignKey(loginmodel, default=None,on_delete=models.CASCADE)
+    username = models.ForeignKey(loginmodel, default=None,on_delete=models.CASCADE)
     date=models.DateField()
     bookissue = models.IntegerField(default=0)
     bookreturn = models.IntegerField(default=0)

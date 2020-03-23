@@ -11,7 +11,7 @@ class RegisterForms(forms.ModelForm):
             'contactnum': 'Contact Number',
             'email':'Email'
         }
-        
+    
     def __init__(self, *args, **kwargs):
         super(RegisterForms, self).__init__(*args, **kwargs)
         # self.fields['department'].empty_label = "Select"
@@ -24,28 +24,21 @@ class VisitorForms(forms.ModelForm):
         model=visitorsmodel
         fields=("students","staff","visitors")
 
+
 class DateInput(forms.DateInput):
     input_type='date'
+
 
 class bookirForm(forms.ModelForm):
     class Meta:
         model=bookirmodel
         date=forms.DateField(widget=DateInput)
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
-        
-    
+          
     def __init__(self,*args,**kwargs):
         super(bookirForm,self).__init__(*args,**kwargs)
         self.fields['deptname'].empty_label="Select Department"
-        # self.fields['bookissue'].required=False
-        # self.fields['bookreturn'].required=False
-        # self.fields['bookrenew'].required=False
         
-# class bookirForm(forms.ModelForm):
-#     class Meta:
-#         model=bookirmodel
-#         fields=("deptname","date","bookissue","bookreturn","bookrenew")
-
 
 class newbookForm(forms.ModelForm):
     class Meta:
@@ -62,6 +55,4 @@ class newbookForm(forms.ModelForm):
         }
     def __init__(self, *args, **kwargs):
         super(newbookForm, self).__init__(*args, **kwargs)
-        # self.fields['department'].empty_label = "Select"
-        # self.fields['contactnum'].required = False
         self.fields['price'].required = False

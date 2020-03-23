@@ -1,12 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-<<<<<<< HEAD
-from user.forms import RegisterForms,VisitorForms,bookirForm
-from .models import loginmodel,visitorsmodel,bookirmodel
-=======
-from user.forms import RegisterForms,VisitorForms,newbookForm
+from user.forms import RegisterForms, VisitorForms, newbookForm, bookirForm
 from .models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
->>>>>>> e38730e7c75595e80cb6d0f4d51102692804198a
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
@@ -45,7 +40,6 @@ def register(request, id=0):
         return redirect('profile')
 
 
-
 def visitors(request):
     if request.method == "GET":
         forms = VisitorForms()
@@ -61,6 +55,7 @@ def visitors(request):
 
 def home(request):
     return render(request, 'dashboard.html')
+
 
 def profile(request):
     context = {'profile_list':loginmodel.objects.all()}
@@ -81,12 +76,12 @@ def newbook(request):
             instance.save()
         return redirect('newbook')
 
+
 def bookir(request):
     if request.method == "GET":
             print("entered if")
             forms = bookirForm()
-            return render(request, "bookir.html",{'forms':forms})
-        
+            return render(request, "bookir.html",{'forms':forms})   
     else:
         print("entered else")
         forms = bookirForm(request.POST)
@@ -94,8 +89,11 @@ def bookir(request):
                 forms.save()
         return redirect('bookir')  
 
+
+
 def mydetails(request):
     ()
+
 
 def update_details(request):
     ()

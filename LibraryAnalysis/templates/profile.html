@@ -158,20 +158,29 @@
                   <table class="table table-borderless">
                     <thead class="border-bottom font-weight-bold">
                       <tr>
+                        <td>Add New User:</td>
                         <td>
                           <a href="{% url 'register' %}" class="btn btn-outline-success pull-right">
                               <i class="fa fa-plus">Add</i>
                           </a>
                         </td>
+                        
                       </tr>
                       <tr>
-                        <td>User Name</td>
+                        <td>Type</td>
+                        <td>Name</td>
+                        <td>Phone</td>
+                        <td>Email</td>
+                        <td>Edit/Update</td>
                       </tr>
                     </thead>
                     <tbody>
                       {% for user in profile_list %}
                       <tr>
+                        <td>{{user.usertype}}</td>
                         <td>{{user.username}}</td>
+                        <td>{{user.contactnum}}</td>
+                        <td>{{user.email}}</td>
                         <td>
                           <a href="{% url 'users_update' id=user.id  %}" class="btn btn-secondary px=0">
                             <i class="fa fa-edit"></i>

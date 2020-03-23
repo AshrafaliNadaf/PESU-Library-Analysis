@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+<<<<<<< HEAD
 from user.forms import RegisterForms,VisitorForms,bookirForm
 from .models import loginmodel,visitorsmodel,bookirmodel
+=======
+from user.forms import RegisterForms,VisitorForms,newbookForm
+from .models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
+>>>>>>> e38730e7c75595e80cb6d0f4d51102692804198a
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
@@ -24,11 +29,9 @@ def login(request):
 
 def register(request, id=0):
     if request.method == "GET":
-        print("entered if")
         if id == 0:    
             forms = RegisterForms()
         else:
-            print("entered else")
             user = loginmodel.objects.get(pk=id)
             forms = RegisterForms(instance=user)
         return render(request, "register.html",{'forms':forms})
@@ -50,6 +53,7 @@ def visitors(request):
         return render(request, "visitors.html",{'forms':forms})
         
     else:
+        
         forms = VisitorForms(request.POST)
         if forms.is_valid():
             forms.save()
@@ -65,7 +69,19 @@ def profile(request):
 
 
 def newbook(request):
-    return render(request, 'newbook.html')
+    if request.method == "GET":
+        forms = newbookForm()
+        return render(request, "newbook.html", {'forms': forms})
+    else:
+        
+
+        forms = newbookForm(request.POST)
+        if forms.is_valid():
+            current_user = loginmodel.objects.get('usertype')
+            instance = forms.save(commit=False)
+            instance.usertype = current_users
+            instance.save()
+        return redirect('newbook')
 
 def bookir(request):
     if request.method == "GET":

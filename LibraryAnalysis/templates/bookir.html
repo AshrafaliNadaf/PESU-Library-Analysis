@@ -139,71 +139,47 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title ">Book Issue/Return</h4>
                 </div>
-                <div class="card-body">              
-                  <!-- <form class="form-inline" role="form"> -->
+                <div class="card-body"> 
+
+                {% block content %}  
+
+                  <form method="post" autocomplete="off" >
+                    {% csrf_token %}
+
                     <div class="row">
                       <div class="col-md-4">
-                        <!-- <div class="form-group">
-                          <select id = "myList" class="form-control" style="margin-right: 15px"  width="5px">
-                          <option value = "0" >Department</option>
-                          <option value = "1" >CS</option>
-                          <option value = "2"  >IS</option>
-                          <option value = "3"  >EC</option>
-                          <option value = "4"  >TC</option>
-                          <option value = "5" >EE</option>
-                          <option value = "6"  >ME</option>
-                          <option value = "7"  >CE</option>
-                          <option value = "8" >BT</option>
-                          <option value = "9" >AR</option>
-                          <option value = "10">LLB</option>
-                          <option value = "11"  >BBA</option>
-                          <option value = "12"  >MBA</option>
-                          <option value = "13"  >MCA</option>
-                          <option value = "14"  >Others</option>
-                          </select>
-                        </div> -->
-                      </div>
-                      <!-- <div class="col-md-4">
                         <div class="form-group">
-                          <input type="date" id="date-picker-example" class="form-control datepicker" style="margin-right:15px "> 
+                          {{forms.deptname|as_crispy_field}}
                         </div>
-                      </div> -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          {{forms.date|as_crispy_field}}
+                        </div>
+                      </div>
                     </div>
                     <div class="row">
-                      <!-- <div class="col-md-3"> -->
-                        <!-- <div class="form-group">
-                          <label class="bmd-label-floating">No. of Book Issue</label>
-                          <input type="number" class="form-control" id="email" style="margin-right:15px ">
-                        </div>
-                      </div> -->
-                      <!-- <div class="col-md-3">
+                      <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">NO. of Book Returned</label>
-                          <input type="number" class="form-control" id="num"style="margin-right:15px ">
+                          {{forms.bookissue|as_crispy_field}}
                         </div>
-                      </div> -->
-                      <!-- <div class="col-md-3">
+                      </div>
+                      <div class="col-md-4">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Renewed Book count:</label>
-                          <input type="number" class="form-control" id="num"style="margin-right:15px ">
+                          {{forms.bookreturn|as_crispy_field}}
                         </div>
-                      </div> -->
-                    <div class="col-md-3">
-                                {% block content %}
-                                  <form  method="POST" autocomplete="off" >
-                                    {% csrf_token %}
-                                    {% comment %} {{form|crispy}} {% endcomment %}
-                                      {{forms.deptname|as_crispy_field}}
-                                      <input type="date" id="date-picker-example" class="form-control datepicker" style="margin-right:15px "> 
-                                      {{forms.bookissue|as_crispy_field}}
-                                      {{forms.bookreturn|as_crispy_field}}
-                                      {{forms.bookrenew|as_crispy_field}}     
-                                    <button type="submit" class="btn btn-success pull-right">Submit</button>
-                                  </form>
-                                {% endblock content %}
-                     </div>
-                    </div>	
-                  <!-- </form> -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          {{forms.bookrenew|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-success pull-right">Submit</button>  
+                  </form> 
+
+                  {% endblock content %}
+                  
                 </div>
               </div>
               <div class="card card-plain">
@@ -247,93 +223,7 @@
                           <td>
                             10
                           </td>
-                        </tr>
-                      <!--<tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td>
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td>
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td>
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td>
-                            $78,615
-                          </td>
-                        </tr>
-                      </tbody>-->
+                        </tr> 
                     </table> 
                   </div>
                 </div>

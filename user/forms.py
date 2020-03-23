@@ -14,8 +14,6 @@ class RegisterForms(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(RegisterForms, self).__init__(*args, **kwargs)
-        # self.fields['department'].empty_label = "Select"
-        # self.fields['contactnum'].required = False
         self.fields['email'].required=False
     
         
@@ -28,12 +26,18 @@ class VisitorForms(forms.ModelForm):
 class DateInput(forms.DateInput):
     input_type='date'
 
-
 class bookirForm(forms.ModelForm):
     class Meta:
         model=bookirmodel
         date=forms.DateField(widget=DateInput)
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
+        labels = {
+            'date': DateInput(),
+            'deptname': 'Department',
+            'bookissue': 'No.Of Book Issue',
+            'bookreturn': "No.Of Book Return",
+            'bookrenew': 'No.Of Book Renew'
+        }
           
     def __init__(self,*args,**kwargs):
         super(bookirForm,self).__init__(*args,**kwargs)
@@ -45,12 +49,8 @@ class newbookForm(forms.ModelForm):
         model = newbookmodel
         fields = ("authorname", "title", "publisher","isbn", "edition", "price","copies")
         labels = {
-            'authorname': 'Author/s Name',
-            'title': 'Title',
-            'publisher': 'Publisher',
+            'authorname': 'Author/s Name:',
             'isbn':"ISBN",
-            'edition':'Edition',
-            'price':'Price',
             'copies':'NO.Of Copies'
         }
     def __init__(self, *args, **kwargs):

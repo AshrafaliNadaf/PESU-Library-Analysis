@@ -46,7 +46,6 @@ def visitors(request):
         return render(request, "visitors.html",{'forms':forms})
         
     else:
-        
         forms = VisitorForms(request.POST)
         if forms.is_valid():
             forms.save()
@@ -79,16 +78,17 @@ def newbook(request):
 
 def bookir(request):
     if request.method == "GET":
-            print("entered if")
             forms = bookirForm()
             return render(request, "bookir.html",{'forms':forms})   
     else:
-        print("entered else")
         forms = bookirForm(request.POST)
         if forms.is_valid():
-                forms.save()
+           userid = request.session['username']
+           current_user = loginmodel.objects.get(id=userid)
+           instance = forms.save(commit=False)
+           instance.username_id = current_user.id
+           instance.save()
         return redirect('bookir')  
-
 
 
 def mydetails(request):

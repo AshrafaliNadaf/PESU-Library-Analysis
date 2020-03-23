@@ -11,26 +11,19 @@ class RegisterForms(forms.ModelForm):
             'contactnum': 'Contact Number',
             'email':'Email'
         }
-<<<<<<< HEAD
-=======
         
->>>>>>> e38730e7c75595e80cb6d0f4d51102692804198a
     def __init__(self, *args, **kwargs):
         super(RegisterForms, self).__init__(*args, **kwargs)
         # self.fields['department'].empty_label = "Select"
         # self.fields['contactnum'].required = False
         self.fields['email'].required=False
-<<<<<<< HEAD
     
-=======
         
->>>>>>> e38730e7c75595e80cb6d0f4d51102692804198a
 class VisitorForms(forms.ModelForm):
     class Meta:
         model=visitorsmodel
         fields=("students","staff","visitors")
 
-<<<<<<< HEAD
 class DateInput(forms.DateInput):
     input_type='date'
 
@@ -48,7 +41,6 @@ class bookirForm(forms.ModelForm):
         # self.fields['bookreturn'].required=False
         # self.fields['bookrenew'].required=False
         
-=======
 # class bookirForm(forms.ModelForm):
 #     class Meta:
 #         model=bookirmodel
@@ -73,4 +65,3 @@ class newbookForm(forms.ModelForm):
         # self.fields['department'].empty_label = "Select"
         # self.fields['contactnum'].required = False
         self.fields['price'].required = False
->>>>>>> e38730e7c75595e80cb6d0f4d51102692804198a

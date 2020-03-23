@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import RegisterForms, VisitorForms, newbookForm, bookirForm
+from user.forms import RegisterForms,VisitorForms,newbookForm, bookirForm
 from .models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
 #m django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy

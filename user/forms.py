@@ -27,12 +27,12 @@ class DateInput(forms.DateInput):
     input_type='date'
 
 class bookirForm(forms.ModelForm):
+    date = forms.DateField(widget=DateInput)
     class Meta:
         model=bookirmodel
-        date=forms.DateField(widget=DateInput)
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
         labels = {
-            'date': DateInput(),
+            'date':'Date',
             'deptname': 'Department',
             'bookissue': 'No.Of Book Issue',
             'bookreturn': "No.Of Book Return",

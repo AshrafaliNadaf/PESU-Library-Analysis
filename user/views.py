@@ -15,7 +15,6 @@ def login(request):
         try:
             check = loginmodel.objects.get(username=usid, password=pswd)
             request.session['username'] = check.id
-
             return redirect('home')
         except:
             pass
@@ -68,20 +67,17 @@ def newbook(request):
         forms = newbookForm()
         return render(request, "newbook.html", {'forms': forms})
     else:
-        
-
         forms = newbookForm(request.POST)
         if forms.is_valid():
-            current_user = loginmodel.objects.get('usertype')
+            userid = request.session['username']
+            current_user = loginmodel.objects.get(id=userid)
             instance = forms.save(commit=False)
-            instance.usertype = current_users
+            instance.username_id = current_user.id
             instance.save()
         return redirect('newbook')
 
 def bookir(request):
     return render(request, 'bookir.html')
-
-        
 
 
 def mydetails(request):

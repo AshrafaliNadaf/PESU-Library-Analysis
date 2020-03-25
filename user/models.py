@@ -24,9 +24,9 @@ class bookirmodel(models.Model):
     deptname=models.ForeignKey(departments,on_delete=models.CASCADE)
     username = models.ForeignKey(loginmodel,to_field="username", default=None,on_delete=models.CASCADE)
     date = models.DateField()
-    bookissue = models.IntegerField(default=0)
-    bookreturn = models.IntegerField(default=0)
-    bookrenew = models.IntegerField(default=0)
+    bookissue = models.PositiveIntegerField(default=0)
+    bookreturn = models.PositiveIntegerField(default=0)
+    bookrenew = models.PositiveIntegerField(default=0)
 
 class newbookmodel(models.Model):
    username = models.ForeignKey(loginmodel,to_field="username",default=None, on_delete=models.CASCADE)
@@ -34,6 +34,7 @@ class newbookmodel(models.Model):
    title=models.CharField(max_length=300)
    publisher = models.CharField(max_length=300)
    isbn = models.CharField(max_length=100)
-   edition = models.IntegerField(default=0)
-   price = models.IntegerField(default=0)
-   copies = models.IntegerField(default=0)
+   edition = models.PositiveIntegerField(default=0)
+   price = models.PositiveIntegerField(default=0)
+   copies = models.PositiveIntegerField(default=0)
+   

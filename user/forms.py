@@ -7,7 +7,7 @@ class RegisterForms(forms.ModelForm):
         fields=("usertype","username","password","contactnum","email")
         labels = {
             'usertype': 'Type of User',
-            # 'username': 'User Name',
+            'username': 'User Name',
             'contactnum': 'Contact Number',
             'email':'Email'
         }

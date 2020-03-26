@@ -8,6 +8,9 @@ class loginmodel(models.Model):
     contactnum=models.BigIntegerField()
     email=models.EmailField(max_length=400)
 
+    def __str__(self):
+        return self.username
+
 class visitorsmodel(models.Model):
     students=models.CharField(max_length=5)
     staff=models.CharField(max_length=5)

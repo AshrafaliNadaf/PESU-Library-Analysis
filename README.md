@@ -1,2 +1,2 @@
 "# miniproject" 
-Keep the changes updated, compare and update
+Keep updated , must compare and then update.

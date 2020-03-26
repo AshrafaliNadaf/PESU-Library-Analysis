@@ -36,11 +36,11 @@ class bookirForm(forms.ModelForm):
         model=bookirmodel
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
         labels = {
-            'date':'Date',
-            'deptname': 'Department',
-            'bookissue': 'No.Of Book Issue',
-            'bookreturn': "No.Of Book Return",
-            'bookrenew': 'No.Of Book Renew'
+            
+            'deptname': '',
+            'bookissue': 'No.Of Books Issue',
+            'bookreturn': "No.Of Books Return",
+            'bookrenew': 'No.Of Books Renewed'
         }
           
     def __init__(self,*args,**kwargs):

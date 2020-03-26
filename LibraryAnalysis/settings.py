@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
     'user',
     'crispy_forms',
 ]
@@ -84,8 +85,8 @@ DATABASES = {
 'PASSWORD': "",
 'HOST': "",
 'PORT': "",
-'OPTIONS': {
-'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+'OPTIONS':{
+    'init_command': "SET sql_mode='STRICT_TRANS_TABLES',foreign_key_checks = 0"
 }
 }
 }

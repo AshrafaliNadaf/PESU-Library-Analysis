@@ -88,7 +88,9 @@ def bookir(request):
            instance = forms.save(commit=False)
            instance.username_id = current_user.id
            instance.save()
-        return redirect('bookir')  
+        return redirect('bookir')
+
+  
 
 
 def mydetails(request):

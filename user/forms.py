@@ -13,14 +13,18 @@ class RegisterForms(forms.ModelForm):
         }
     
     def __init__(self, *args, **kwargs):
-        super(RegisterForms, self).__init__(*args, **kwargs)
-        self.fields['email'].required=False
+        super(RegisterForms,self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
     
         
 class VisitorForms(forms.ModelForm):
     class Meta:
         model=visitorsmodel
-        fields=("students","staff","visitors")
+        fields=("students","staff","visitors","username")
+
+    def __init__(self, *args, **kwargs):
+        super(VisitorForms,self).__init__(*args, **kwargs)
+        self.fields['username'].empty_label = "Select User"
 
 
 class DateInput(forms.DateInput):
@@ -32,11 +36,11 @@ class bookirForm(forms.ModelForm):
         model=bookirmodel
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
         labels = {
-            'date':'Date',
-            'deptname': 'Department',
-            'bookissue': 'No.Of Book Issue',
-            'bookreturn': "No.Of Book Return",
-            'bookrenew': 'No.Of Book Renew'
+            
+            'deptname': '',
+            'bookissue': 'No.Of Books Issue',
+            'bookreturn': "No.Of Books Return",
+            'bookrenew': 'No.Of Books Renewed'
         }
           
     def __init__(self,*args,**kwargs):

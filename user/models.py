@@ -12,10 +12,10 @@ class loginmodel(models.Model):
         return self.username
 
 class visitorsmodel(models.Model):
-    students=models.CharField(max_length=5)
-    staff=models.CharField(max_length=5)
-    visitors=models.CharField(max_length=5)
-    username = models.ForeignKey(loginmodel,to_field="username",default=None,on_delete=models.CASCADE)
+    students = models.PositiveIntegerField(default=0)
+    staff = models.PositiveIntegerField(default=0)
+    visitors=models.PositiveIntegerField(default=0)
+    # username = models.ForeignKey(loginmodel,to_field="username",default=None,on_delete=models.CASCADE)
 
 class departments(models.Model):
     deptname=models.CharField(max_length=50)
@@ -37,7 +37,7 @@ class newbookmodel(models.Model):
    title=models.CharField(max_length=300)
    publisher = models.CharField(max_length=300)
    isbn = models.CharField(max_length=100)
-   edition = models.PositiveIntegerField(default=0)
+   edition = models.PositiveIntegerField()
    price = models.PositiveIntegerField(default=0)
-   copies = models.PositiveIntegerField(default=0)
+   copies = models.PositiveIntegerField(default=1)
    

@@ -40,11 +40,26 @@ def register(request, id=0):
         return redirect('profile')
 
 
-def visitors(request):
-    if request.method == "GET":
-        forms = VisitorForms()
-        return render(request, "visitors.html",{'forms':forms})
+# def visitors(request):
+#     if request.method == "GET":
+#         forms = VisitorForms()
+#         return render(request, "visitors.html",{'forms':forms})
         
+#     else:
+#         forms = VisitorForms(request.POST)
+#         if forms.is_valid():
+#             forms.save()
+#         return redirect('visitors')
+
+def visitors(request, id=0):
+    if request.method == "GET":
+        if id == 0:
+            forms = VisitorForms()
+        else:
+            user = visitorsmodel.objects.get(pk=id)
+            forms = VisitorForms(instance=user)
+        # forms = VisitorForms()
+        return render(request, "visitors.html", {'forms': forms})
     else:
         forms = VisitorForms(request.POST)
         if forms.is_valid():

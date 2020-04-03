@@ -14,17 +14,17 @@ class RegisterForms(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(RegisterForms,self).__init__(*args, **kwargs)
-        self.fields['email'].required = False
+        # self.fields['email'].required = False
     
         
 class VisitorForms(forms.ModelForm):
     class Meta:
         model=visitorsmodel
-        fields=("students","staff","visitors","username")
+        fields=("students","staff","visitors")
 
-    def __init__(self, *args, **kwargs):
-        super(VisitorForms,self).__init__(*args, **kwargs)
-        self.fields['username'].empty_label = "Select User"
+    # def __init__(self, *args, **kwargs):
+    #     super(VisitorForms,self).__init__(*args, **kwargs)
+    #     self.fields['username'].empty_label = "Select User"
 
 
 class DateInput(forms.DateInput):

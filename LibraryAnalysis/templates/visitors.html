@@ -142,26 +142,70 @@
                   
                   <form method="post" autocomplete="off">
                     {% csrf_token %}
-                    <div class="col-md-6">
-                      {{forms.students|as_crispy_field}}
-                      {{forms.staff|as_crispy_field}}
-                      {{forms.visitors|as_crispy_field}}
-                      {{forms.username|as_crispy_field}}
-                    </div>
-                      
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          {{forms.students|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          {{forms.staff|as_crispy_field}}
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          {{forms.visitors|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>   
                     <div class="col-md-8 float-right">
-                      <button type="submit" class="btn btn-primary float-none">SUBMIT</button>
-
+                      <button type="submit" class="btn btn-success pull-right">SUBMIT</button>
                     </div>
                     <div class="clearfix"></div>
                   </form>
-                
+                </div>
+              </div>
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <p class="card-category">Visitors Details:</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="">
+                        <th style="font-weight: bold;">
+                          ID
+                        </th>
+                        <th style="font-weight: bold;">
+                          Students
+                        </th>
+                        <th style="font-weight: bold;">
+                          Staff
+                        </th>
+                        <th style="font-weight: bold;">
+                          Visitors
+                        </th>
+                        </thead>
+                      <tbody>
+                        {% for vis in visitors_list %}
+                          <tr>{{vis.students}}</tr>
+                          <tr>{{vis.staff}}</tr>
+                          <tr>{{vis.visitors}}</tr>
+                        {% endfor %}
+                      </tbody>
+                        
+                    </table> 
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
+      
+      
      
     </div>
     <!--   Core JS Files   -->

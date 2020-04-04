@@ -123,6 +123,13 @@
         </div>
       </nav>
       <!-- End Navbar -->
+      {% if messages %}
+				
+    				{% for message in messages %}
+    					<message>{{ message }}</message>
+    				{% endfor %}
+				
+			{% endif %}
       <div class="content">
         <div class="container-fluid">
           <div class="row" style="padding:50px">

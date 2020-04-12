@@ -129,14 +129,14 @@ def bookir(request):
         #    }
         return redirect('bookir')
 
-# def bookirdisplay(request):
-#     obj=bookirmodel.objects.get(id=1)
+def bookirdisplay(request):
+    obj=bookirmodel.objects.get(id=1)
     
-#     return render(request,"bookir.html",context={
-#         "deptname":obj.deptname
-#         # "bookissue":obj.bookissue
+    return render(request,"bookir.html",context={
+        "deptname":obj.deptname
+        # "bookissue":obj.bookissue
         
-#     })
+    })
     
         
 

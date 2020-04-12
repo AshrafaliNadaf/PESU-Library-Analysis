@@ -1,5 +1,5 @@
 from django import forms
-from user.models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
+from user.models import loginmodel, visitorsmodel, bookirmodel, newbookmodel,
 
 class RegisterForms(forms.ModelForm):
     class Meta:

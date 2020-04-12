@@ -94,7 +94,16 @@ def newbook(request):
 def bookir(request):
     if request.method == "GET":
             forms = bookirForm()
-            return render(request, "bookir.html",{'forms':forms})   
+            obj=bookirmodel.objects.get(id=1)
+            context={
+            # 'obj':obj
+             "deptname":obj.deptname
+            # "bookissue":obj.bookissue
+            }
+            print(obj)
+            
+           
+            return render(request, "bookir.html",{'forms':forms},context)   
     else:
         forms = bookirForm(request.POST)
         if forms.is_valid():
@@ -103,7 +112,25 @@ def bookir(request):
            instance = forms.save(commit=False)
            instance.username_id = current_user.id
            instance.save()
+        #    obj=bookirmodel.objects.all()
+        #    context={
+        #     # 'obj':obj
+        #      "id":obj.bookissue
+        #     # "bookissue":obj.bookissue
+        #    }
         return redirect('bookir')
+
+# def bookirdisplay(request):
+#     obj=bookirmodel.objects.get(id=1)
+    
+#     return render(request,"bookir.html",context={
+#         "deptname":obj.deptname
+#         # "bookissue":obj.bookissue
+        
+#     })
+    
+        
+
 
   
 

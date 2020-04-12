@@ -13,4 +13,6 @@ urlpatterns = [
     path('newbook/', views.newbook, name='newbook'),
     path('visitors/', views.visitors, name='visitors'),
     path('bookir/',views.bookir,name="bookir"),
+    path('bookir_info/', views.bookir_info, name="bookir_info"),
+    path('visitor_info/', views.visitor_info, name="visitor_info")
 ]

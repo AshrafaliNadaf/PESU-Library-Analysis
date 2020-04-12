@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'bookir.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}  
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <p class="card-category">
+              {% comment %} <a href="{% url 'bookir' %}" class="btn btn-link pull-left" ><i class="fa fa-backward"></i></a> {% endcomment %}
+              Books Transaction Details:</p>
+            </div>
+            <div class="card-body">
+              <form method="GET" autocomplete="off" >
+              {% csrf_token %}
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="">
+                      <th style="font-weight: bold;">
+                        ID
+                      </th>
+                      <th style="font-weight: bold;">
+                        Department
+                      </th>
+                      <th style="font-weight: bold;">
+                        Issued book count
+                      </th>
+                      <th style="font-weight: bold;">
+                        Returned book count
+                      </th>
+                      <th style="font-weight: bold;">
+                        Renewed book count
+                      </th>
+                    </thead>
+                    <tbody>
+                      {% for user in obj %} 
+                      <tr>
+                        <td>{{user.id}}</td>  
+                        <td>{{user.deptname}}</td>
+                        <td>{{user.bookissue}}</td> 
+                        <td>{{user.bookreturn}}</td> 
+                        <td>{{user.bookrenew}}</td>
+                      </tr> 
+                      {% endfor %} 
+                    </tbody>
+                  </table> 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django import forms
-from user.models import loginmodel, visitorsmodel, bookirmodel, newbookmodel,
+from user.models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
 
 class RegisterForms(forms.ModelForm):
     class Meta:
@@ -16,16 +16,6 @@ class RegisterForms(forms.ModelForm):
         super(RegisterForms,self).__init__(*args, **kwargs)
         # self.fields['email'].required = False
     
-        
-class VisitorForms(forms.ModelForm):
-    class Meta:
-        model=visitorsmodel
-        fields=("students","staff","visitors")
-
-    # def __init__(self, *args, **kwargs):
-    #     super(VisitorForms,self).__init__(*args, **kwargs)
-    #     self.fields['username'].empty_label = "Select User"
-
 
 class DateInput(forms.DateInput):
     input_type='date'
@@ -35,8 +25,7 @@ class bookirForm(forms.ModelForm):
     class Meta:
         model=bookirmodel
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
-        labels = {
-            
+        labels = { 
             'deptname': '',
             'bookissue': 'No.Of Books Issue',
             'bookreturn': "No.Of Books Return",
@@ -47,6 +36,18 @@ class bookirForm(forms.ModelForm):
         super(bookirForm,self).__init__(*args,**kwargs)
         self.fields['deptname'].empty_label="Select Department"
         
+
+class VisitorForms(forms.ModelForm):
+    date = forms.DateField(widget=DateInput)
+
+    class Meta:
+        model = visitorsmodel
+        fields = ("date", "students", "staff", "visitors")
+        labels = {
+            'students': 'No.Of Students',
+            'staff': "No.Of Staffs",
+            'visitors': "No.Of Guests"
+        }
 
 class newbookForm(forms.ModelForm):
     class Meta:

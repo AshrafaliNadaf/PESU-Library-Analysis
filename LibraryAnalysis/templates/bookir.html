@@ -19,9 +19,9 @@
 </head>
 
 <body class="">
-{% csrf_token %}
+
   <div class="wrapper ">
-    <div class="sidebar" data-color="green" data-background-color="white" data-image="../static/img/pesu_globe.jpg">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../static/img/pesu_globe.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -131,21 +131,19 @@
         </div>
       </nav>
       <!-- End Navbar -->
+      {% block content %}
       <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Book Issue/Return</h4>
+                  <p class="card-category">Enter Book Issue/Return/Renewal Details:</p>
                 </div>
                 <div class="card-body"> 
 
-                {% block content %}  
-
                   <form method="post" autocomplete="off" >
                     {% csrf_token %}
-
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -175,60 +173,16 @@
                         </div>
                       </div>
                     </div>
+                    <a href="{% url 'bookir_info' %}" class="btn btn-outline-info pull-right" ><span class="fa fa-info"></span></a>
                     <button type="submit" class="btn btn-success pull-right">Submit</button>  
-                    <!-- <button type="submit" class="btn btn-success pull-right">Submit</button>   -->
-                  <!-- </form> -->
-
-                 
-                  
+                  </form> 
                 </div>
               </div>
-              <div class="card card-plain">
-                <div class="card-header card-header-primary">
-                  <p class="card-category">Books Transaction Details:</p>
-                </div>
-              <!-- <form method="GET"> -->
-                <!-- <button type="submit" class="btn btn-success pull-right">View</button>   -->
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead class="">
-                        <th style="font-weight: bold;">
-                          ID
-                        </th>
-                        <th style="font-weight: bold;">
-                          Department
-                        </th>
-                        <th style="font-weight: bold;">
-                          Issued book count
-                        </th>
-                        <th style="font-weight: bold;">
-                          Returned book count
-                        </th>
-                        <th style="font-weight: bold;">
-                          Renewed book count
-                        </th>
-                      </thead>
-                       <tbody>
-                         <!-- {% for item in obj %} -->
-                        <tr>
-                          <td>{{obj.deptname}}</td>
-                          
-                          
-                        </tr> 
-                        <!-- {% endfor %} -->
-                    </table> 
-                 
-                  </div>
-                </div>
-              </div>
-            </form>
-            
-            {% endblock content %}
             </div>
           </div>
         </div>
       </div>
+      {% endblock content %}
     </div>
   </div>
  

@@ -1,15 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import RegisterForms,VisitorForms,newbookForm, bookirForm
+from user.forms import RegisterForms,VisitorForms,newbookForm,bookirForm
 from .models import loginmodel, visitorsmodel, bookirmodel, newbookmodel
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-#m django.views.generic.edit import CreateView, UpdateView, DeleteView
+# django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.core.urlresolvers import reverse_lazy
 # Create your views here.
-
-# Create your views here.
-
 
 def login(request):
     if request.method == "POST":
@@ -48,43 +45,62 @@ def register(request, id=0):
         return redirect('profile')
 
 
-# def visitors(request):
-#     if request.method == "GET":
-#         forms = VisitorForms()
-#         return render(request, "visitors.html",{'forms':forms})
-        
-#     else:
-#         forms = VisitorForms(request.POST)
-#         if forms.is_valid():
-#             forms.save()
-#         return redirect('visitors')
-
-def visitors(request, id=0):
-    if request.method == "GET":
-        if id == 0:
-            forms = VisitorForms()
-        else:
-            user = visitorsmodel.objects.get(pk=id)
-            forms = VisitorForms(instance=user)
-        # forms = VisitorForms()
-        return render(request, "visitors.html", {'forms': forms})
-    else:
-        forms = VisitorForms(request.POST)
-        if forms.is_valid():
-            forms.save()
-        return redirect('visitors')
-        
-
 # @login_required
 def home(request):
     return render(request, 'dashboard.html')
 
-
+#profile
 def profile(request):
-    context = {'profile_list':loginmodel.objects.all()}
+    context = {'profile_list': loginmodel.objects.all()}
     return render(request, "profile.html", context)
 
+#book Request/return
+def bookir(request):
+    if request.method == "POST":
+        forms = bookirForm(request.POST)
+        if forms.is_valid():
+           userid = request.session['username']
+           current_user = loginmodel.objects.get(id=userid)
+           instance = forms.save(commit=False)
+           instance.username_id = current_user.id
+           instance.save()
+           return redirect('bookir_info')
+    else:
+        if request.method == "GET":
+            # user =  bookirmodel.objects.get()
+            forms = bookirForm()
+            return render(request, "bookir.html", {'forms': forms})
 
+def bookir_info(request):
+    if request.method == "GET":
+        context = {'obj': bookirmodel.objects.all()}
+        return render(request, "bookir_info.html", context)
+
+
+#Vistors
+def visitors(request):
+    if request.method == "POST":
+        forms = VisitorForms(request.POST)
+        if forms.is_valid():
+           userid = request.session['username']
+           current_user = loginmodel.objects.get(id=userid)
+           instance = forms.save(commit=False)
+           instance.username_id = current_user.id
+           instance.save()
+           return redirect('visitor_info')
+    else:
+        if request.method == "GET":
+            # user =  bookirmodel.objects.get()
+            forms = VisitorForms()
+            return render(request, "visitors.html", {'forms': forms})
+
+def visitor_info(request):
+    if request.method == "GET":
+        context = {'obj': visitorsmodel.objects.all()}
+        return render(request, "visitor_info.html", context)
+        
+
+#New book
 def newbook(request):
     if request.method == "GET":
         forms = newbookForm()
@@ -98,51 +114,6 @@ def newbook(request):
             instance.username_id = current_user.id
             instance.save()
         return redirect('newbook')
-
-
-def bookir(request):
-    if request.method == "GET":
-            forms = bookirForm()
-            obj=bookirmodel.objects.get(id=1)
-            context={
-            # 'obj':obj
-             "deptname":obj.deptname
-            # "bookissue":obj.bookissue
-            }
-            print(obj)
-            
-           
-            return render(request, "bookir.html",{'forms':forms},context)   
-    else:
-        forms = bookirForm(request.POST)
-        if forms.is_valid():
-           userid = request.session['username']
-           current_user = loginmodel.objects.get(id=userid)
-           instance = forms.save(commit=False)
-           instance.username_id = current_user.id
-           instance.save()
-        #    obj=bookirmodel.objects.all()
-        #    context={
-        #     # 'obj':obj
-        #      "id":obj.bookissue
-        #     # "bookissue":obj.bookissue
-        #    }
-        return redirect('bookir')
-
-def bookirdisplay(request):
-    obj=bookirmodel.objects.get(id=1)
-    
-    return render(request,"bookir.html",context={
-        "deptname":obj.deptname
-        # "bookissue":obj.bookissue
-        
-    })
-    
-        
-
-
-  
-
 
 def mydetails(request):
     ()

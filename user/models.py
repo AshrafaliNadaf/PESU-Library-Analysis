@@ -12,10 +12,12 @@ class loginmodel(models.Model):
         return self.username
 
 class visitorsmodel(models.Model):
+    username = models.ForeignKey(loginmodel, to_field="username", default=None, on_delete=models.CASCADE)
+    date = models.DateField()
     students = models.PositiveIntegerField(default=0)
     staff = models.PositiveIntegerField(default=0)
     visitors=models.PositiveIntegerField(default=0)
-    # username = models.ForeignKey(loginmodel,to_field="username",default=None,on_delete=models.CASCADE)
+    
 
 class departments(models.Model):
     deptname=models.CharField(max_length=50)

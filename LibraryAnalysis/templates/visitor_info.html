@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'visitors.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+  {% block content %}  
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <p class="card-category">
+              {% comment %} <a href="{% url 'bookir' %}" class="btn btn-link pull-left" ><i class="fa fa-backward"></i></a> {% endcomment %}
+              Visitors Details:</p>
+            </div>
+            <div class="card-body">
+              <form method="GET" autocomplete="off" >
+              {% csrf_token %}
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="">
+                      <th style="font-weight: bold;">
+                        ID
+                      </th>
+                      <th style="font-weight: bold;">
+                        NO.of Students
+                      </th>
+                      <th style="font-weight: bold;">
+                        NO.of Staffs
+                      </th>
+                      <th style="font-weight: bold;">
+                        NO.of Guests
+                      </th>
+                    </thead>
+                    <tbody>
+                      {% for user in obj %} 
+                      <tr>
+                        <td>{{user.id}}</td>  
+                        <td>{{user.students}}</td>
+                        <td>{{user.staff}}</td> 
+                        <td>{{user.visitors}}</td> 
+                      </tr> 
+                      {% endfor %} 
+                    </tbody>
+                  </table> 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

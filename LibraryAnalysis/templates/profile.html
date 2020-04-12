@@ -130,6 +130,7 @@
     				{% endfor %}
 				
 			{% endif %}
+      {% block content %}
       <div class="content">
         <div class="container-fluid">
           <div class="row" style="padding:50px">
@@ -151,16 +152,11 @@
                 </div>
                </div> 
                <div class="column" >
-               <div class="card">
+              <div class="card">
                 <div class="card-header card-header-primary">
                 <h4 class="card-title">Users:</h4>
                 </div>
                 <div class="card-body">
-                <div class="column">
-                  {% comment %} <a href="{% url 'register' %}" class="btn btn-primary btn-round">Register</a> {% endcomment %}
-                  </div>
-                  
-                  {% block content %}
                   <form action="" method="GET">
                   {% csrf_token %}
                   <table class="table table-borderless">
@@ -198,16 +194,14 @@
                       {% endfor %}
                     </body>
                   </table>
-                  </form>
-                  {% endblock content %}
-                  <div class="column">
-                  </div> 
+                  </form> 
                 </div>
-                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
+        {% endblock content %}
       </div>
   </div>
   <!--   Core JS Files   -->

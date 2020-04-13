@@ -27,9 +27,9 @@ class bookirForm(forms.ModelForm):
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
         labels = { 
             'deptname': '',
-            'bookissue': 'No.Of Books Issue',
-            'bookreturn': "No.Of Books Return",
-            'bookrenew': 'No.Of Books Renewed'
+            'bookissue': 'NO.Of Books Issue',
+            'bookreturn': "NO.Of Books Return",
+            'bookrenew': 'NO.Of Books Renewed'
         }
           
     def __init__(self,*args,**kwargs):
@@ -44,9 +44,9 @@ class VisitorForms(forms.ModelForm):
         model = visitorsmodel
         fields = ("date", "students", "staff", "visitors")
         labels = {
-            'students': 'No.Of Students',
-            'staff': "No.Of Staffs",
-            'visitors': "No.Of Guests"
+            'students': 'NO.Of Students',
+            'staff': "NO.Of Staffs",
+            'visitors': "NO.Of Guests"
         }
 
 class newbookForm(forms.ModelForm):

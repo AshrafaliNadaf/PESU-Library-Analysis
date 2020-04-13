@@ -35,6 +35,9 @@
                       <th style="font-weight: bold;">
                         Renewed book count
                       </th>
+                      <th style="font-weight: bold;">
+                        Update/Delete
+                      </th>
                     </thead>
                     <tbody>
                       {% for user in obj %} 
@@ -44,6 +47,11 @@
                         <td>{{user.bookissue}}</td> 
                         <td>{{user.bookreturn}}</td> 
                         <td>{{user.bookrenew}}</td>
+                        <td>
+                          <a href="{% url 'bookir_update' a=user.id  %}" class="btn btn-secondary px=0">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </td>
                       </tr> 
                       {% endfor %} 
                     </tbody>

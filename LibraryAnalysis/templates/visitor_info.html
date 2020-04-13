@@ -32,14 +32,22 @@
                       <th style="font-weight: bold;">
                         NO.of Guests
                       </th>
+                      <th style="font-weight: bold;">
+                        Update/Delete
+                      </th>
                     </thead>
                     <tbody>
-                      {% for user in obj %} 
+                      {% for visitor in obj %} 
                       <tr>
-                        <td>{{user.id}}</td>  
-                        <td>{{user.students}}</td>
-                        <td>{{user.staff}}</td> 
-                        <td>{{user.visitors}}</td> 
+                        <td>{{visitor.id}}</td>  
+                        <td>{{visitor.students}}</td>
+                        <td>{{visitor.staff}}</td> 
+                        <td>{{visitor.visitors}}</td> 
+                        <td>
+                          <a href="{% url 'visitors_update' id=visitor.id  %}" class="btn btn-secondary px=0">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                        </td>
                       </tr> 
                       {% endfor %} 
                     </tbody>

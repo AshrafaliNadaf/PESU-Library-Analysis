@@ -19,11 +19,11 @@
             <form  method="post" autocomplete="off">
               {% csrf_token %}
               {% comment %} {{form|crispy}} {% endcomment %}
-                {{forms.usertype|as_crispy_field}}
-                {{forms.username|as_crispy_field}}
-                {{forms.password|as_crispy_field}}
-                {{forms.contactnum|as_crispy_field}}
-                {{forms.email|as_crispy_field}}     
+                {{form.usertype|as_crispy_field}}
+                {{form.username|as_crispy_field}}
+                {{form.password|as_crispy_field}}
+                {{form.contactnum|as_crispy_field}}
+                {{form.email|as_crispy_field}}     
               <button type="submit" class="btn btn-success pull-right">Submit</button>
             </form>  
           </div>

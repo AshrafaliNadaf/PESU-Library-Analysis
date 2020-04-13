@@ -29,19 +29,18 @@ def register(request, id=0):
             forms = RegisterForms()
         else:
             user = loginmodel.objects.get(pk=id)
-            forms = RegisterForms(instance=user)
-        return render(request, "register.html",{'forms':forms})
+            form = RegisterForms(instance=user)
+        return render(request, "register.html",{'form':form})
     else:
         if id == 0:
-            forms = RegisterForms(request.POST)
+            form = RegisterForms(request.POST)
         else:
             user = loginmodel.objects.get(pk=id)
-            forms = RegisterForms(request.POST,instance=user)
+            form = RegisterForms(request.POST,instance=user)
         if forms.is_valid():
             username = forms.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}')
-            forms.save()
-            
+            forms.save()    
         return redirect('profile')
 
 
@@ -55,49 +54,62 @@ def profile(request):
     return render(request, "profile.html", context)
 
 #book Request/return
-def bookir(request):
-    if request.method == "POST":
-        forms = bookirForm(request.POST)
-        if forms.is_valid():
-           userid = request.session['username']
-           current_user = loginmodel.objects.get(id=userid)
-           instance = forms.save(commit=False)
-           instance.username_id = current_user.id
-           instance.save()
-           return redirect('bookir_info')
-    else:
-        if request.method == "GET":
-            # user =  bookirmodel.objects.get()
+def bookir(request, a=0):
+    if request.method == "GET":
+        if a == 0:
             forms = bookirForm()
-            return render(request, "bookir.html", {'forms': forms})
+        else:
+            user1 = bookirmodel.objects.get(pk=a)
+            forms = bookirForm(instance=user1)
+        return render(request, "bookir.html", {'forms': forms})
+    else:
+        if a == 0:
+            forms = bookirForm(request.POST)
+        else:
+            user1 = bookirmodel.objects.get(pk=a)
+            forms = bookirForm(request.POST, instance=user1)
+        if forms.is_valid():
+            userid = request.session['username']
+            current_user = loginmodel.objects.get(id=userid)
+            instance2 = forms.save(commit=False)
+            instance2.username_id = current_user.id
+            instance2.save()
+            forms.save()
+        return redirect('bookir_info')
+        
 
 def bookir_info(request):
-    if request.method == "GET":
-        context = {'obj': bookirmodel.objects.all()}
-        return render(request, "bookir_info.html", context)
+    context = {'obj': bookirmodel.objects.all()}
+    return render(request, "bookir_info.html", context)
 
 
 #Vistors
-def visitors(request):
-    if request.method == "POST":
-        forms = VisitorForms(request.POST)
-        if forms.is_valid():
-           userid = request.session['username']
-           current_user = loginmodel.objects.get(id=userid)
-           instance = forms.save(commit=False)
-           instance.username_id = current_user.id
-           instance.save()
-           return redirect('visitor_info')
-    else:
-        if request.method == "GET":
-            # user =  bookirmodel.objects.get()
+def visitors(request, id=0):
+    if request.method == "GET":
+        if id == 0:
             forms = VisitorForms()
-            return render(request, "visitors.html", {'forms': forms})
+        else:
+            user = visitorsmodel.objects.get(pk=id)
+            forms = VisitorForms(instance=user)
+        return render(request, "visitors.html", {'forms': forms})
+    else:
+        if id == 0:
+            forms = VisitorForms(request.POST)
+        else:
+            user = visitorsmodel.objects.get(pk=id)
+            forms = VisitorForms(request.POST, instance=user)
+        if forms.is_valid():
+            userid = request.session['username']
+            current_user = loginmodel.objects.get(id=userid)
+            instance1 = forms.save(commit=False)
+            instance1.username_id = current_user.id
+            instance1.save()
+            forms.save()
+        return redirect('visitor_info')
 
 def visitor_info(request):
-    if request.method == "GET":
-        context = {'obj': visitorsmodel.objects.all()}
-        return render(request, "visitor_info.html", context)
+    context = {'obj': visitorsmodel.objects.all()}
+    return render(request, "visitor_info.html", context)
         
 
 #New book

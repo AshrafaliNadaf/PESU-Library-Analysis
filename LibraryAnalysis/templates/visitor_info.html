@@ -47,6 +47,10 @@
                           <a href="{% url 'visitors_update' id=visitor.id  %}" class="btn btn-secondary px=0">
                             <i class="fa fa-edit"></i>
                           </a>
+                          {% comment %} <form action="{% url 'visitors_delete' id=user.id %}" method="post" class="d-inline">
+                          {% csrf_token %}
+                            <Button type="submit" class="btn-just-icon"><i class="fa fa-trash text-danger "></i></Button>
+                          </form> {% endcomment %}
                         </td>
                       </tr> 
                       {% endfor %} 

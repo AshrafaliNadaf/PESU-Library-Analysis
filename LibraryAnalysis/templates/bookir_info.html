@@ -49,8 +49,12 @@
                         <td>{{user.bookrenew}}</td>
                         <td>
                           <a href="{% url 'bookir_update' a=user.id  %}" class="btn btn-secondary px=0">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit "></i>
                           </a>
+                          <form action="{% url 'bookir_delete' a=user.id %}" method="post" class="d-inline">
+                          {% csrf_token %}
+                            <Button type="submit" class="btn-just-icon"><i class="fa fa-trash text-danger "></i></Button>
+                          </form>
                         </td>
                       </tr> 
                       {% endfor %} 

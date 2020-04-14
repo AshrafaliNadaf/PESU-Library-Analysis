@@ -82,6 +82,11 @@ def bookir_info(request):
     context = {'obj': bookirmodel.objects.all()}
     return render(request, "bookir_info.html", context)
 
+def bookir_delete(request,a):
+    user = bookirmodel.objects.get(pk=a)
+    user.delete()
+    return redirect('bookir_info')
+
 
 #Vistors
 def visitors(request, id=0):
@@ -110,7 +115,12 @@ def visitors(request, id=0):
 def visitor_info(request):
     context = {'obj': visitorsmodel.objects.all()}
     return render(request, "visitor_info.html", context)
-        
+
+
+# def visitors_delete(request, id):
+#     user = visitorsmodel.objects.get(pk=id)
+#     user.delete()
+#     return redirect('visitor_info')
 
 #New book
 def newbook(request):

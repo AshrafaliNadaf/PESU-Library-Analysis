@@ -10,9 +10,10 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('<int:a>/', views.bookir, name='bookir_update'),
+    path('delete/<int:a>/', views.bookir, name='bookir_delete'),
     path('<int:id>/', views.register, name='users_update'),
-   
     path('<int:id>/', views.visitors, name='visitors_update'),
+    # path('delete/<int:id>/', views.visitors, name='visitors_delete'),
     path('newbook/', views.newbook, name='newbook'),
     path('visitors/', views.visitors, name='visitors'),
     path('bookir/',views.bookir, name='bookir'),

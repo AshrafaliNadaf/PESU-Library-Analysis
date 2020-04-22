@@ -116,7 +116,9 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  {% if type.usertype == "admin" %}
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                  {% endif %}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'login' %}">Log out</a>
                 </div>
@@ -126,14 +128,16 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      {% if messages %}	
-    				{% for message in messages %}
-    					<message>{{ message }}</message>
-    				{% endfor %}	
-			{% endif %}
       
       <div class="content">
         <div class="container-fluid">
+        <div class="row pull-right">
+            {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          </div> 
           <div class="row">
             <div class="col-md-11">
               <div class="card">

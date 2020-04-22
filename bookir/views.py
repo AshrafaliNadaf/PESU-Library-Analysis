@@ -8,13 +8,15 @@ from django.contrib import messages
 # Create your views here.
 
 def bookir(request, a=0):
+    user = request.session['username']
+    type = loginmodel.objects.get(id=user)
     if request.method == "GET":
         if a == 0:
             forms = bookirForm()
         else:
             user1 = bookirmodel.objects.get(pk=a)
             forms = bookirForm(instance=user1)
-        return render(request, "bookir.html", {'forms': forms})
+        return render(request, "bookir.html", {'forms': forms,'type': type})
     else:
         if a == 0:
             forms = bookirForm(request.POST)
@@ -32,6 +34,8 @@ def bookir(request, a=0):
 
 
 def bookir_info(request):
+    # user = request.session['username']
+    # type = loginmodel.objects.get(id=user)
     context = {'obj': bookirmodel.objects.all()}
     return render(request, "bookir_info.html", context)
 

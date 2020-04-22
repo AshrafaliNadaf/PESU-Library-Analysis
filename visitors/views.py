@@ -8,13 +8,15 @@ from django.contrib import messages
 
 
 def visitors(request, id=0):
+    user = request.session['username']
+    type = loginmodel.objects.get(id=user)
     if request.method == "GET":
         if id == 0:
             forms = VisitorForms()
         else:
             user = visitorsmodel.objects.get(pk=id)
             forms = VisitorForms(instance=user)
-        return render(request, "visitors.html", {'forms': forms})
+        return render(request, "visitors.html", {'forms': forms,'type':type})
     else:
         if id == 0:
             forms = VisitorForms(request.POST)

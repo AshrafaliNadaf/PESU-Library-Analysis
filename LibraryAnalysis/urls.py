@@ -13,4 +13,5 @@ urlpatterns = [
     path('bookir/', include('bookir.urls')),
     path('user/', include('user.urls')),
     path('visitors/', include('visitors.urls')),
+    path('profile/', views.profile, name='profile'),
 ]

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from user.forms import newbookForm
-from .models import  newbookmodel
+from register.forms import RegisterForms
+from .models import  newbookmodel 
 from register.models import loginmodel
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -24,25 +25,33 @@ def login(request):
 
 # @login_required
 def home(request):
-    return render(request, 'dashboard.html')
+    user = request.session['username']
+    type =  loginmodel.objects.get(id=user)
+    return render(request, 'dashboard.html',{'type': type})
 
 #profile
 def profile(request):
-    context = {'profile_list': loginmodel.objects.all()}
-    return render(request, "profile.html", context)
+    user = request.session['username']
+    type = loginmodel.objects.get(id=user)
+    if type.usertype=="admin" :
+        context = {'profile_list': loginmodel.objects.all()}
+        return render(request, "profile.html", context)
+    return redirect('home')
 
 #New book
 def newbook(request):
     if request.method == "GET":
+        user = request.session['username']
+        type = loginmodel.objects.get(id=user)
         forms = newbookForm()
-        return render(request, "newbook.html", {'forms': forms})
+        return render(request, "newbook.html", {'forms': forms,'type':type})
     else:
         forms = newbookForm(request.POST)
         if forms.is_valid():
             bookname = forms.cleaned_data.get('title')
             messages.success(request, f'New Book "{bookname}" Requested.')
-            userid = request.session['username']
-            current_user = loginmodel.objects.get(id=userid)
+            user = request.session['username']
+            current_user = loginmodel.objects.get(id=user)
             instance = forms.save(commit=False)
             instance.username_id = current_user.id
             instance.save()

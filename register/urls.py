@@ -5,5 +5,5 @@ from django.conf import settings
 
 urlpatterns = [
     path('register/', views.register, name='register'),
-    path('<int:id>/', views.register, name='users_update'),
+    path('<int:id><int:d>/', views.register, name='users_update'),
 ]

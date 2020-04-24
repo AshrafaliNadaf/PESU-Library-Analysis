@@ -7,40 +7,40 @@ from django.contrib import messages
 
 # Create your views here.
 
-def bookir(request, a=0):
+def bookir(request, a=0,d=0):
     user = request.session['username']
     type = loginmodel.objects.get(id=user)
-    if request.method == "GET":
-        if a == 0:
-            forms = bookirForm()
+    if d==0:
+        if request.method == "GET":
+            if a == 0:
+                forms = bookirForm()
+            else:
+                user1 = bookirmodel.objects.get(pk=a)
+                forms = bookirForm(instance=user1)
+            return render(request, "bookir.html", {'forms': forms,'type': type})
         else:
-            user1 = bookirmodel.objects.get(pk=a)
-            forms = bookirForm(instance=user1)
-        return render(request, "bookir.html", {'forms': forms,'type': type})
+            if a == 0:
+                forms = bookirForm(request.POST)
+            else:
+                user1 = bookirmodel.objects.get(pk=a)
+                forms = bookirForm(request.POST, instance=user1)
+            if forms.is_valid():
+                messages.success(request, f'Data Updated.')
+                userid = request.session['username']
+                current_user = loginmodel.objects.get(id=userid)
+                instance2 = forms.save(commit=False)
+                instance2.username_id = current_user.id
+                instance2.save()
+                forms.save()
+            return redirect('bookir_info')
     else:
-        if a == 0:
-            forms = bookirForm(request.POST)
-        else:
-            user1 = bookirmodel.objects.get(pk=a)
-            forms = bookirForm(request.POST, instance=user1)
-        if forms.is_valid():
-            userid = request.session['username']
-            current_user = loginmodel.objects.get(id=userid)
-            instance2 = forms.save(commit=False)
-            instance2.username_id = current_user.id
-            instance2.save()
-            forms.save()
+        bookirmodel.objects.filter(pk=a).delete()
         return redirect('bookir_info')
 
 
 def bookir_info(request):
-    # user = request.session['username']
-    # type = loginmodel.objects.get(id=user)
-    context = {'obj': bookirmodel.objects.all()}
-    return render(request, "bookir_info.html", context)
+    user = request.session['username']
+    type = loginmodel.objects.get(id=user)
+    obj= bookirmodel.objects.all()
+    return render(request, "bookir_info.html",{'obj':obj,'type':type})
 
-
-def bookir_delete(request, a):
-    user = bookirmodel.objects.get(pk=a)
-    user.delete()
-    return redirect('bookir_info')

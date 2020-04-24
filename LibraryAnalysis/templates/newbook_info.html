@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends 'newbook.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+  {% block content %}  
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        {% if messages %}
+          {% for message in messages %}
+          <div class="col-md-4 pull-right">
+            <div class="alert alert-success text-center">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="material-icons">close</i>
+                </button>
+                <span>
+                  <b>{{ message.tags }} - {{ message }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div> 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <p class="card-category">
+              Book Request Details:</p>
+            </div>
+            <div class="card-body">
+              <form method="GET" autocomplete="off" >
+              {% csrf_token %}
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="">
+                      {% comment %} <th style="font-weight: bold;">
+                        ID
+                      </th> {% endcomment %}
+                      <th style="font-weight: bold;" class="text-left">
+                        Date
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Author
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Title
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Publisher
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        ISBN
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Edition
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Price
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Copies
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        User
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        Action
+                      </th>
+                    </thead>
+                    <tbody>
+                      {% for newbook in obj %} 
+                      <tr>
+                        {% comment %} <td>{{visitor.id}}</td>   {% endcomment %}
+                        <td class="text-left">{{newbook.date}}</td>
+                        <td class="text-left">{{newbook.authorname}}</td>
+                        <td class="text-left">{{newbook.title}}</td>
+                        <td class="text-left">{{newbook.publisher}}</td> 
+                        <td class="text-left">{{newbook.isbn}}</td> 
+                        <td class="text-left">{{newbook.edition}}</td>
+                        <td class="text-left">{{newbook.price}}</td>
+                        <td class="text-left">{{newbook.copies}}</td>
+                        <td class="text-left">{{type.username}}</td>
+                        <td class="td-actions text-center pull-center">
+                          <a type="button" rel="tooltip" class="btn btn-link btn-success check" href="#">
+                          <i class="material-icons">check</i></a>
+
+                          <a type="submit" rel="tooltip" class="btn btn-link btn-danger remove"
+                          href="#">
+                            <i class="material-icons">close</i>
+                          </a> 
+                        </td>
+                      </tr> 
+                      {% endfor %} 
+                    </tbody>
+                  </table> 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

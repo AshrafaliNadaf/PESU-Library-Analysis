@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'register',
     'visitors',
     'bookir',
+    'newbook',
     'crispy_forms',
 ]
 CRISPY_TEMPLATE_PACK='bootstrap4'

@@ -7,6 +7,21 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
+        {% if messages %}
+          {% for message in messages %}
+          <div class="col-md-3 pull-right">
+            <div class="alert alert-success text-center">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="material-icons">close</i>
+                </button>
+                <span>
+                  <b>{{ message.tags }} - {{ message }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      </div> 
+      <div class="row">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header card-header-primary">
@@ -18,10 +33,13 @@
               <form method="GET" autocomplete="off" >
               {% csrf_token %}
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class="table table-hover" >
                     <thead class="">
-                      <th style="font-weight: bold;">
+                      {% comment %} <th style="font-weight: bold;">
                         ID
+                      </th> {% endcomment %}
+                      <th style="font-weight: bold;">
+                        Date
                       </th>
                       <th style="font-weight: bold;">
                         Department
@@ -42,19 +60,20 @@
                     <tbody>
                       {% for user in obj %} 
                       <tr>
-                        <td>{{user.id}}</td>  
-                        <td>{{user.deptname}}</td>
-                        <td>{{user.bookissue}}</td> 
-                        <td>{{user.bookreturn}}</td> 
-                        <td>{{user.bookrenew}}</td>
-                        <td>
-                          <a href="{% url 'bookir_update' a=user.id  %}" class="btn btn-secondary px=0">
-                            <i class="fa fa-edit "></i>
+                        {% comment %} <td>{{i+1}}</td>   {% endcomment %}
+                        <td class="text-left">{{user.date}}</td>
+                        <td class="text-center">{{user.deptname}}</td>
+                        <td class="text-center">{{user.bookissue}}</td> 
+                        <td class="text-center">{{user.bookreturn}}</td> 
+                        <td class="text-center">{{user.bookrenew}}</td>
+                        <td class="td-actions text-center pull-center">
+                          <a type="button" class="btn btn-link btn-success  edit" href="{% url 'bookir_update' a=user.id d=0 %}">
+                          <i class="material-icons">edit</i>
                           </a>
-                          <form action="{% url 'bookir_delete' a=user.id %}" method="post" class="d-inline">
-                          {% csrf_token %}
-                            <Button type="submit" class="btn-just-icon"><i class="fa fa-trash text-danger "></i></Button>
-                          </form>
+                          <a type="button" href="{% url 'bookir_update' a=user.id d=user.id %}" class="btn btn-link btn-danger remove">
+                            <i class="material-icons">close</i>
+                          </a>
+          
                         </td>
                       </tr> 
                       {% endfor %} 
@@ -68,4 +87,5 @@
       </div>
     </div>
   </div>
+  
 {% endblock content %}

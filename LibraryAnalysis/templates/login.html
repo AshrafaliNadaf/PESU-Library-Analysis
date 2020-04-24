@@ -38,37 +38,30 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('/static/img/pesu2.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
-			
 				<span class="login100-form-title p-b-41">
 					Login
 				</span>
 				{% block content %}
 				{% if messages %}
-					{% comment %} <ul class="messages"> {% endcomment %}
-						{% for message in messages %}
-							<h3 class="alert alert-{{ message.tags }} text-white" role="alert">{{ message }}</h3>
-						{% endfor %}
-					{% comment %} </ul> {% endcomment %}
+					{% for message in messages %}
+						<h3 class="alert alert-{{ message.tags }} text-white" role="alert">{{ message }}</h3>
+					{% endfor %}
 				{% endif %}
 				<form class="login100-form validate-form p-b-33 p-t-5" method="post">
 					{% csrf_token %}
-
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input class="input100" type="text" name="username" placeholder="User name" id="user">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
-
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100" type="password" name="password" placeholder="Password" id="pswd">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
-					
 					<div class="container-login100-form-btn m-t-32">
 						<button class="login100-form-btn">
 							Login
 						</button>
-					</div>
-					
+					</div>	
 				</form>
 				{% endblock content %}
 			<footer class="footer card-footer">
@@ -76,7 +69,8 @@
 					<div class="gtco-contact-info text-white">
                         <h3>Contact Information:</h3>
                         <li >
-							<i class="fa fa-phone"></i><a  href="callto:080-26722882"> 080 - 26722882 </a><br/>
+							<i class="fa fa-phone"></i><a  href="callto:080-26722882"> 080 - 26722882 </a> , 
+							<i class="fa fa-phone"> </i><a href="callto:99808 33991"> 99808 33991</a><br/>
 							<i class="fa fa-at"></i><a  href="mailto:librarian@pes.edu"> librarian@pes.edu</a><br/>
 							<i class="fa fa-globe"></i><a  href="http://library.pes.edu"> www.library.pes.edu</a>
 						</li>	

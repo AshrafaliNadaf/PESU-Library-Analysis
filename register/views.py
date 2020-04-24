@@ -8,22 +8,26 @@ from django.contrib import messages
 
 # @login_required(login_url='login')
 
-def register(request, id=0):
-    if request.method == "GET":
-        if id == 0:
-            forms = RegisterForms()
+def register(request, id=0,d=0):
+    if d == 0:
+        if request.method == "GET":
+            if id == 0:
+                forms = RegisterForms()
+            else:
+                user = loginmodel.objects.get(pk=id)
+                forms = RegisterForms(instance=user)
+            return render(request, "register.html", {'form': forms})
         else:
-            user = loginmodel.objects.get(pk=id)
-            forms = RegisterForms(instance=user)
-        return render(request, "register.html", {'form': forms})
+            if id == 0:
+                forms = RegisterForms(request.POST)
+            else:
+                user = loginmodel.objects.get(pk=id)
+                forms = RegisterForms(request.POST, instance=user)
+            if forms.is_valid():
+                username = forms.cleaned_data.get('username')
+                messages.success(request, f'Account of ({username}) Updated.')
+                forms.save()
+            return redirect('profile')
     else:
-        if id == 0:
-            forms = RegisterForms(request.POST)
-        else:
-            user = loginmodel.objects.get(pk=id)
-            forms = RegisterForms(request.POST, instance=user)
-        if forms.is_valid():
-            username = forms.cleaned_data.get('username')
-            messages.success(request, f'Account of {username} Updated.')
-            forms.save()
+        loginmodel.objects.filter(pk=id).delete()
         return redirect('profile')

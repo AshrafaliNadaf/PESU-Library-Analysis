@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from user.forms import newbookForm
-from register.forms import RegisterForms
-from .models import  newbookmodel 
+from register.forms import RegisterForms 
 from register.models import loginmodel
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -34,28 +32,12 @@ def profile(request):
     user = request.session['username']
     type = loginmodel.objects.get(id=user)
     if type.usertype=="admin" :
-        context = {'profile_list': loginmodel.objects.all()}
-        return render(request, "profile.html", context)
+        profile_list= loginmodel.objects.all()
+        return render(request, "profile.html", {'profile_list': profile_list,'type':type})
     return redirect('home')
 
 #New book
-def newbook(request):
-    if request.method == "GET":
-        user = request.session['username']
-        type = loginmodel.objects.get(id=user)
-        forms = newbookForm()
-        return render(request, "newbook.html", {'forms': forms,'type':type})
-    else:
-        forms = newbookForm(request.POST)
-        if forms.is_valid():
-            bookname = forms.cleaned_data.get('title')
-            messages.success(request, f'New Book "{bookname}" Requested.')
-            user = request.session['username']
-            current_user = loginmodel.objects.get(id=user)
-            instance = forms.save(commit=False)
-            instance.username_id = current_user.id
-            instance.save()
-        return redirect('newbook')
+
 
 def mydetails(request):
     ()

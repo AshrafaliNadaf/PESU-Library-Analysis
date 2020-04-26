@@ -159,9 +159,8 @@
                 <div class="card-body">
                   <h4 class="card-title text-info" style="text-bold">Subhash Reddy B</h4>
                   <h6 class="card-category text-gray">Librarian, PES UNIVERSITY</h6>
-                  <p class="card-description">B.A., M.Lib.Sc<br/>
-                    With 20+ years of professional experience in academic libraries and special interests in user studies, information seeking behavior, and library automation. He has published several articles in national and international journals and presented papers in international conferences. He is currently pursuing PhD from AMET University.
-                    He is the life member of the Indian Library Association and Karnataka State Library Association and is serving as Governing Council Member for Karnataka State Library Association (KALA).
+                  <p class="card-description">
+                  <a type="button" href="{% url 'devops' %}" class="btn btn-outline-info btn-round">About Us</a> 
                   </p>
                 </div>
                 </div>
@@ -219,6 +218,26 @@
             </div>
           </div>
         </div>
+        <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="">
+                  About us
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="#" target="_blank">KKA Team</a> for PESU Library.
+          </div>
+        </div>
+      </footer>
         {% endblock content %}
       </div>
   </div>

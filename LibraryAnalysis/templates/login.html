@@ -34,7 +34,6 @@
 	
 </head>
 <body>
-		
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('/static/img/pesu2.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
@@ -64,21 +63,20 @@
 					</div>	
 				</form>
 				{% endblock content %}
-			<footer class="footer card-footer">
-				<div class="container-fluid">
-					<div class="gtco-contact-info text-white">
+				<div class="container-fluid text-white">
+					<div class="gtco-contact-info text-center">
                         <h3>Contact Information:</h3>
                         <li >
 							<i class="fa fa-phone"></i><a  href="callto:080-26722882"> 080 - 26722882 </a> , 
 							<i class="fa fa-phone"> </i><a href="callto:99808 33991"> 99808 33991</a><br/>
 							<i class="fa fa-at"></i><a  href="mailto:librarian@pes.edu"> librarian@pes.edu</a><br/>
-							<i class="fa fa-globe"></i><a  href="http://library.pes.edu"> www.library.pes.edu</a>
+							<i class="fa fa-globe"></i><a  href="http://library.pes.edu"> www.library.pes.edu</a><br/>
+							<a  href="{% url 'devops' %}"> About us</a><br/>
 						</li>	
                     </div>	
-				</div>
-      		</footer>
+				</div>	
 			</div>	
 		</div>
-	</div>
+	</div>	
 </body>
 </html>

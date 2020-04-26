@@ -38,7 +38,9 @@ def profile(request):
         return render(request, "profile.html", {'profile_list': profile_list,'type':type})
     return redirect('home')
 
-#New book
+
+def devops(request):
+    return render(request, 'devops.html')
 
 
 def mydetails(request):

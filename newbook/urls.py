@@ -6,5 +6,6 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('newbook/', views.newbook, name='newbook'),
-    path('newbook_info/', views.newbook_info, name='newbook_info')
+    path('newbook_info/', views.newbook_info, name='newbook_info'),
+    path('<int:id><int:x>/', views.newbook_update, name='newbook_update')
 ]

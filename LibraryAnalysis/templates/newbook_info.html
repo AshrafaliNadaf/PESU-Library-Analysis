@@ -9,13 +9,13 @@
       <div class="row">
         {% if messages %}
           {% for message in messages %}
-          <div class="col-md-4 pull-right">
-            <div class="alert alert-success text-center">
+          <div class="col-md-6 pull-right">
+            <div class="alert alert-{{ message.tags }} text-center">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <i class="material-icons">close</i>
                 </button>
                 <span>
-                  <b>{{ message.tags }} - {{ message }}</span>
+                  <b>{{ message }}</span>
             </div>
           </div>
           {% endfor %}
@@ -34,9 +34,6 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <thead class="">
-                      {% comment %} <th style="font-weight: bold;">
-                        ID
-                      </th> {% endcomment %}
                       <th style="font-weight: bold;" class="text-left">
                         Date
                       </th>
@@ -74,7 +71,6 @@
                     <tbody>
                       {% for newbook in obj %} 
                       <tr>
-                        {% comment %} <td>{{visitor.id}}</td>   {% endcomment %}
                         <td class="text-left">{{newbook.date}}</td>
                         <td class="text-left">{{newbook.authorname}}</td>
                         <td class="text-left">{{newbook.title}}</td>
@@ -84,15 +80,18 @@
                         <td class="text-left">{{newbook.price}}</td>
                         <td class="text-left">{{newbook.copies}}</td>
                         <td class="text-left">{{newbook.username_id}}</td>
-                        <td class="text-left">{{""}}</td>
+                        <td class="text-left">{{newbook.status}}</td>
                         <td class="td-actions text-center pull-center">
-                          <a type="button" rel="tooltip" class="btn btn-link btn-success check" href="#">
+                          {% if newbook.status != "Approved"%}
+                            <a type="button" rel="tooltip" title="Approve" class="btn btn-link btn-success check" href="{% url 'newbook_update' id=newbook.id x=0 %}">
                           <i class="material-icons">check</i></a>
-
-                          <a type="submit" rel="tooltip" class="btn btn-link btn-danger remove"
-                          href="#">
+                          {% endif %} 
+                          {% if newbook.status != "Rejected"%}
+                          <a type="submit" rel="tooltip" title="Reject" class="btn btn-link btn-danger remove"
+                          href="{% url 'newbook_update' id=newbook.id x=1 %}">
                             <i class="material-icons">close</i>
                           </a> 
+                          {% endif %} 
                         </td>
                       </tr> 
                       {% endfor %} 

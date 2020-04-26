@@ -79,7 +79,7 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-              <li class="nav-item">
+              <li class="nav-item" title="Dashboard">
                 <a class="nav-link" href="{% url 'home' %}">
                   <i class="material-icons">dashboard</i>
                   <p class="d-lg-none d-md-block">
@@ -87,7 +87,7 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" title="Account">
                 <a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true"
                   aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -115,12 +115,12 @@
             {% if messages %}
               {% for message in messages %}
               <div class="col-md-4 pull-right">
-                <div class="alert alert-success text-center">
+                <div class="alert alert-{{ message.tags }} text-center">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <i class="material-icons">close</i>
                     </button>
                     <span>
-                      <b>{{ message.tags }} - {{ message }}</span>
+                      <b>{{ message }}</span>
                 </div>
               </div>
               {% endfor %}
@@ -189,10 +189,9 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success pull-right">Request</button>
+                    <button type="submit" class="btn btn-success pull-right" rel="tooltip" title="Request Admin">Request</button>
                     <div class="clearfix"></div>
-                  </form>
-                  
+                  </form> 
                 </div>
               </div>
             </div>

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from register.forms import RegisterForms 
 from register.models import loginmodel
+from newbook.models import newbookmodel
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 # django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -25,7 +26,8 @@ def login(request):
 def home(request):
     user = request.session['username']
     type =  loginmodel.objects.get(id=user)
-    return render(request, 'dashboard.html',{'type': type})
+    obj = newbookmodel.objects.all()
+    return render(request, 'dashboard.html',{'type': type,'obj':obj})
 
 #profile
 def profile(request):

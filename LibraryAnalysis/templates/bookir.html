@@ -94,7 +94,7 @@
               </div>
             </form>{% endcomment %}
             <ul class="navbar-nav">
-              <li class="nav-item">
+              <li class="nav-item" title="Dashboard">
                 <a class="nav-link" href="{% url 'home'%}">
                   <i class="material-icons">dashboard</i>
                   <p class="d-lg-none d-md-block">
@@ -118,7 +118,7 @@
                   <a class="dropdown-item" href="#">Another One</a>
                 </div>
               </li>  {% endcomment %}
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" title="Account">
                 <a class="nav-link" href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
                   <p class="d-lg-none d-md-block">
@@ -180,8 +180,8 @@
                         </div>
                       </div>
                     </div>
-                    <a href="{% url 'bookir_info' %}" class="btn btn pull-right" ><i class="fa fa-list"></i></a>
-                    <button type="submit" class="btn btn-success pull-right">Submit</button>  
+                    <a href="{% url 'bookir_info' %}" rel="tooltip" title="Database" class="btn btn pull-right" ><i class="fa fa-list"></i></a>
+                    <button type="submit" rel="tooltip" title="Save" class="btn btn-success pull-right">Submit</button>  
                   </form> 
                 </div>
               </div>

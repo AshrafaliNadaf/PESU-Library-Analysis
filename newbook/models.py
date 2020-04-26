@@ -14,4 +14,6 @@ class newbookmodel(models.Model):
    edition = models.PositiveIntegerField()
    price = models.PositiveIntegerField(default=0)
    copies = models.PositiveIntegerField(default=1)
+   status = models.CharField(max_length=100)
    date = models.DateTimeField(default=datetime.now)
+

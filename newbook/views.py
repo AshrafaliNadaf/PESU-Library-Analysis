@@ -33,3 +33,14 @@ def newbook_info(request):
     type = loginmodel.objects.get(id=user)
     obj = newbookmodel.objects.all()
     return render(request, "newbook_info.html", {'obj': obj, 'type': type})
+
+
+def newbook_update(request,id=0,x=0):
+    bookname = newbookmodel.objects.get(pk=id)
+    if x == 0:
+        newbookmodel.objects.filter(pk=id).update(status="Approved")
+        messages.success(request, f'Book " {bookname.title} " Approved.')
+    elif x == 1:
+        newbookmodel.objects.filter(pk=id).update(status="Rejected")
+        messages.warning(request, f'Book " {bookname.title} " Rejected.')
+    return redirect('newbook_info')

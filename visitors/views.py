@@ -34,6 +34,7 @@ def visitors(request, id=0,d=0):
                 forms.save()
             return redirect('visitor_info')
     else:
+        messages.warning(request,'Data Deleted.')
         visitorsmodel.objects.filter(pk=id).delete()
         return redirect('visitor_info')
 

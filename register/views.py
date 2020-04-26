@@ -25,9 +25,10 @@ def register(request, id=0,d=0):
                 forms = RegisterForms(request.POST, instance=user)
             if forms.is_valid():
                 username = forms.cleaned_data.get('username')
-                messages.success(request, f'Account of ({username}) Updated.')
+                messages.success(request, f'Account of "{username}"  Updated.')
                 forms.save()
             return redirect('profile')
     else:
+        messages.warning(request, 'User Deleted.')
         loginmodel.objects.filter(pk=id).delete()
         return redirect('profile')

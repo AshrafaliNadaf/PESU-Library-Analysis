@@ -34,6 +34,7 @@ def bookir(request, a=0,d=0):
                 forms.save()
             return redirect('bookir_info')
     else:
+        messages.warning(request,'Data Deleted.')
         bookirmodel.objects.filter(pk=a).delete()
         return redirect('bookir_info')
 

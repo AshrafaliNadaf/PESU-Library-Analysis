@@ -1,12 +1,11 @@
 from django.db import models
-from register.models import loginmodel
+from register.models import User
 from datetime import datetime
 # Create your models here.
 
 
-class newbookmodel(models.Model):
-   username = models.ForeignKey(
-       loginmodel, to_field="username", default=None, on_delete=models.CASCADE)
+class Newbook(models.Model):
+   user = models.ForeignKey(User,on_delete=models.CASCADE)
    authorname = models.CharField(max_length=300)
    title = models.CharField(max_length=300)
    publisher = models.CharField(max_length=300)

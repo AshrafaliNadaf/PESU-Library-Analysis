@@ -1,5 +1,5 @@
 from django import forms
-from .models import  visitorsmodel
+from .models import  Visitor
 
 
 class DateInput(forms.DateInput):
@@ -9,7 +9,7 @@ class VisitorForms(forms.ModelForm):
     date = forms.DateField(widget=DateInput)
 
     class Meta:
-        model = visitorsmodel
+        model = Visitor
         fields = ("date", "students", "staff", "visitors")
         labels = {
             'students': 'NO.Of Students',

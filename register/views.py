@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from register.forms import RegisterForms
-from .models import loginmodel
+from .models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 # Create your views here.
@@ -14,14 +14,14 @@ def register(request, id=0,d=0):
             if id == 0:
                 forms = RegisterForms()
             else:
-                user = loginmodel.objects.get(pk=id)
+                user = User.objects.get(pk=id)
                 forms = RegisterForms(instance=user)
             return render(request, "register.html", {'form': forms})
         else:
             if id == 0:
                 forms = RegisterForms(request.POST)
             else:
-                user = loginmodel.objects.get(pk=id)
+                user = User.objects.get(pk=id)
                 forms = RegisterForms(request.POST, instance=user)
             if forms.is_valid():
                 username = forms.cleaned_data.get('username')
@@ -30,5 +30,5 @@ def register(request, id=0,d=0):
             return redirect('profile')
     else:
         messages.warning(request, 'User Deleted.')
-        loginmodel.objects.filter(pk=id).delete()
+        User.objects.filter(pk=id).delete()
         return redirect('profile')

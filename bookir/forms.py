@@ -1,5 +1,5 @@
 from django import forms
-from .models import bookirmodel
+from .models import Bookir
 
 
 class DateInput(forms.DateInput):
@@ -8,7 +8,7 @@ class DateInput(forms.DateInput):
 class bookirForm(forms.ModelForm):
     date = forms.DateField(widget=DateInput)
     class Meta:
-        model=bookirmodel
+        model=Bookir
         fields=("deptname","date","bookissue","bookreturn","bookrenew")
         labels = { 
             'deptname': '',

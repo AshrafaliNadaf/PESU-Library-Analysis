@@ -1,13 +1,12 @@
 from django.db import models
-from user.models import departments
-from register.models import loginmodel
+from user.models import Department
+from register.models import User
 # Create your models here.
 
 
-class bookirmodel(models.Model):
-    deptname = models.ForeignKey(departments, on_delete=models.CASCADE)
-    username = models.ForeignKey(
-        loginmodel, to_field="username", default=None, on_delete=models.CASCADE)
+class Bookir(models.Model):
+    deptname = models.ForeignKey(Department, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     bookissue = models.PositiveIntegerField(default=0)
     bookreturn = models.PositiveIntegerField(default=0)

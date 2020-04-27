@@ -1,47 +1,54 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from visitors.forms import VisitorForms
-from .models import  visitorsmodel,loginmodel
+from .models import  Visitor,User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 # Create your views here.
 
 
 def visitors(request, id=0,d=0):
-    user = request.session['username']
-    type = loginmodel.objects.get(id=user)
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
     if d == 0:
         if request.method == "GET":
             if id == 0:
                 forms = VisitorForms()
             else:
-                user = visitorsmodel.objects.get(pk=id)
-                forms = VisitorForms(instance=user)
+                user1 = Visitor.objects.get(pk=id)
+                forms = VisitorForms(instance=user1)
             return render(request, "visitors.html", {'forms': forms,'type':type})
         else:
             if id == 0:
                 forms = VisitorForms(request.POST)
             else:
-                user = visitorsmodel.objects.get(pk=id)
-                forms = VisitorForms(request.POST, instance=user)
+                user1 = Visitor.objects.get(pk=id)
+                forms = VisitorForms(request.POST, instance=user1)
             if forms.is_valid():
                 messages.success(request, f'Data Updated.')
                 userid = request.session['username']
-                current_user = loginmodel.objects.get(id=userid)
+                current_user = User.objects.get(id=userid)
                 instance1 = forms.save(commit=False)
-                instance1.username_id = current_user.id
+                if current_user.usertype == "user":
+                    instance1.user_id = current_user.id
+                else:
+                    user1 = Visitor.objects.get(pk=id)
+                    instance1.user_id = user1.id
                 instance1.save()
                 forms.save()
             return redirect('visitor_info')
     else:
         messages.warning(request,'Data Deleted.')
-        visitorsmodel.objects.filter(pk=id).delete()
+        Visitor.objects.filter(pk=id).delete()
         return redirect('visitor_info')
 
 
 def visitor_info(request):
-    user = request.session['username']
-    type = loginmodel.objects.get(id=user)
-    obj= visitorsmodel.objects.all()
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
+    if type.usertype=="user":
+        obj= Visitor.objects.filter(user=type.id)
+    else:
+        obj = Visitor.objects.all()
     return render(request, "visitor_info.html", {'obj': obj, 'type': type})
 

@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class loginmodel(models.Model):
+class User(models.Model):
     usertype = models.CharField(max_length=50)
     username = models.CharField(max_length=200, unique=True)
     password = models.CharField(max_length=200)

@@ -109,7 +109,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   {% for newbook in obj %} 
                   {% if newbook.status == "" %}
-                    <a class="dropdown-item alert-info" href="{% url 'newbook_info' %}">New Book "{{newbook.title}}" Requested by {{newbook.username_id}}</a>
+                    <a class="dropdown-item alert-info" href="{% url 'newbook_info' %}">New Book "{{newbook.title}}" Requested by {{newbook.user_id}}</a>
                   {% endif %}
                   {% endfor %}
                 </div>

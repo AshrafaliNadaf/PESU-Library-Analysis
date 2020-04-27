@@ -1,9 +1,9 @@
 from django import forms
-from .models import loginmodel
+from .models import User
 
 class RegisterForms(forms.ModelForm):
     class Meta:
-        model=loginmodel
+        model=User
         fields=("usertype","username","password","contactnum","email")
         labels = {
             'usertype': 'Type of User',

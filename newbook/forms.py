@@ -1,10 +1,10 @@
 from django import forms
-from .models import  newbookmodel
+from .models import  Newbook
 
 
 class newbookForm(forms.ModelForm):
     class Meta:
-        model = newbookmodel
+        model = Newbook
         fields = ("authorname", "title", "publisher","isbn", "edition", "price","copies")
         labels = {
             'authorname': 'Author/s Name:',

@@ -38,22 +38,27 @@
                       {% comment %} <th style="font-weight: bold;">
                         ID
                       </th> {% endcomment %}
-                      <th style="font-weight: bold;">
+                      <th style="font-weight: bold;" class="text-center">
                         Date
                       </th>
-                      <th style="font-weight: bold;">
+                      <th style="font-weight: bold;" class="text-center">
                         Department
                       </th>
-                      <th style="font-weight: bold;">
+                      <th style="font-weight: bold;" class="text-center">
                         Issued book count
                       </th>
-                      <th style="font-weight: bold;">
+                      <th style="font-weight: bold;" class="text-center">
                         Returned book count
                       </th>
-                      <th style="font-weight: bold;">
+                      <th style="font-weight: bold;" class="text-center">
                         Renewed book count
                       </th>
-                      <th style="font-weight: bold;">
+                      {% if type.usertype == "admin" %}
+                      <th style="font-weight: bold;" class="text-center">
+                        User
+                      </th>
+                      {% endif %}
+                      <th style="font-weight: bold;" class="text-center">
                         Update/Delete
                       </th>
                     </thead>
@@ -61,11 +66,14 @@
                       {% for user in obj %} 
                       <tr>
                         {% comment %} <td>{{i+1}}</td>   {% endcomment %}
-                        <td class="text-left">{{user.date}}</td>
+                        <td class="text-center">{{user.date}}</td>
                         <td class="text-center">{{user.deptname}}</td>
                         <td class="text-center">{{user.bookissue}}</td> 
                         <td class="text-center">{{user.bookreturn}}</td> 
                         <td class="text-center">{{user.bookrenew}}</td>
+                        {% if type.usertype == "admin" %}
+                        <td class="text-center">{{user.user.username}}</td>
+                        {% endif %}
                         <td class="td-actions text-center pull-center">
                           <a type="button" rel="tooltip" title="Edit" class="btn btn-link btn-success  edit" href="{% url 'bookir_update' a=user.id d=0 %}">
                           <i class="material-icons">edit</i>

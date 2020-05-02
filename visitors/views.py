@@ -33,7 +33,7 @@ def visitors(request, id=0,d=0):
                     instance1.user_id = current_user.id
                 else:
                     user1 = Visitor.objects.get(pk=id)
-                    instance1.user_id = user1.id
+                    instance1.user_id = user1.user_id
                 instance1.save()
                 forms.save()
             return redirect('visitor_info')

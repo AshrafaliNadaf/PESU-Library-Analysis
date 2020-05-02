@@ -189,7 +189,21 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success pull-right" rel="tooltip" title="Request Admin">Request</button>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>Requested by:*</label>
+                          <div class="form form-check-inline">
+                            {{forms.role}} 
+                          </div>
+                          {{forms.usn|as_crispy_field}}
+                        </div>                
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          </br></br>
+                          <button type="submit" class="btn btn-success btn-lg pull-right" rel="tooltip" title="Request Admin">Request</button>
+                        </div>
+                      </div> 
+                     </div>
                     <div class="clearfix"></div>
                   </form> 
                 </div>

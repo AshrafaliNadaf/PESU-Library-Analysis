@@ -22,6 +22,7 @@ def login(request):
         messages.error(request,f'Invalid Username/Password')
     return render(request, 'login.html')
 
+
 # @login_required
 def home(request):
     user1 = request.session['username']
@@ -41,6 +42,11 @@ def profile(request):
 
 def devops(request):
     return render(request, 'devops.html')
+
+
+def ack_update(request, z=0):
+    Newbook.objects.filter(pk=z).update(ack=0)
+    return redirect('home')
 
 
 def mydetails(request):

@@ -15,4 +15,6 @@ urlpatterns = [
     path('visitors/', include('visitors.urls')),
     path('profile/', views.profile, name='profile'),
     path('newbook/', include('newbook.urls')),
+ 
+
 ]

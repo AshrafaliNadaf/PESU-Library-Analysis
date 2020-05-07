@@ -9,7 +9,7 @@ from django.contrib import messages
 
 def bookir(request, a=0,d=0):
     user1 = request.session['username']
-    type = User.objects.get(id=user1)
+    type1 = User.objects.get(id=user1)
     if d==0:
         if request.method == "GET":
             if a == 0:
@@ -17,7 +17,7 @@ def bookir(request, a=0,d=0):
             else:
                 user2 = Bookir.objects.get(pk=a)
                 forms = bookirForm(instance=user2)
-            return render(request, "bookir.html", {'forms': forms,'type': type})
+            return render(request, "bookir.html", {'forms': forms,'type': type1})
         else:
             if a == 0:
                 forms = bookirForm(request.POST)
@@ -45,10 +45,10 @@ def bookir(request, a=0,d=0):
 
 def bookir_info(request):
     user1 = request.session['username']
-    type = User.objects.get(id=user1)
-    if type.usertype=="user":
-        obj= Bookir.objects.filter(user=type.id)
+    type1 = User.objects.get(id=user1)
+    if type1.usertype=="user":
+        obj= Bookir.objects.filter(user=type1.id)
     else:
         obj = Bookir.objects.all()
-    return render(request, "bookir_info.html",{'obj':obj,'type':type})
+    return render(request, "bookir_info.html",{'obj':obj,'type':type1})
 

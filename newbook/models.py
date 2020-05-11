@@ -14,5 +14,8 @@ class Newbook(models.Model):
    price = models.PositiveIntegerField(default=0)
    copies = models.PositiveIntegerField(default=1)
    status = models.CharField(max_length=100)
+   ack = models.PositiveIntegerField(default=0)
    date = models.DateTimeField(default=datetime.now)
+   role = models.CharField(max_length=100)
+   usn = models.CharField(max_length=100)
 

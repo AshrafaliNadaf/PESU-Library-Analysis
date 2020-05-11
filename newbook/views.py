@@ -39,8 +39,13 @@ def newbook_update(request,id=0,x=0):
     bookname = Newbook.objects.get(pk=id)
     if x == 0:
         Newbook.objects.filter(pk=id).update(status="Approved")
+        Newbook.objects.filter(pk=id).update(ack=1)
         messages.success(request, f'Book " {bookname.title} " Approved.')
     elif x == 1:
         Newbook.objects.filter(pk=id).update(status="Rejected")
+        Newbook.objects.filter(pk=id).update(ack=1)
         messages.warning(request, f'Book " {bookname.title} " Rejected.')
     return redirect('newbook_info')
+
+
+

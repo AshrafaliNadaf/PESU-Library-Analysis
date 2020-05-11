@@ -93,13 +93,18 @@
                   </p>
                 </a>
               </li>
-              {% if type.usertype == "admin" %}
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                     {% for newbook in obj %} 
-                    {% if newbook.status == "" %}
-                      <span class="notification">new</span>
+                    {% if type.usertype == "admin" %}
+                      {% if newbook.status == "" %}
+                       <span class="notification">new</span>
+                      {% endif %}
+                    {% else %}
+                      {% if newbook.ack == 1 %}
+                       <span class="notification">new</span>
+                      {% endif %}
                     {% endif %}
                     {% endfor %}
                   <p class="d-lg-none d-md-block">
@@ -108,13 +113,18 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   {% for newbook in obj %} 
-                  {% if newbook.status == "" %}
-                    <a class="dropdown-item alert-info" href="{% url 'newbook_info' %}">New Book "{{newbook.title}}" Requested by {{newbook.user_id}}</a>
+                  {% if type.usertype == "admin" %}
+                    {% if newbook.status == "" %}
+                      <a class="dropdown-item alert-info" href="{% url 'newbook_info' %}">New Book "{{newbook.title}}" Requested by {{newbook.user.username}}</a>
+                    {% endif %}
+                  {% else %}
+                    {% if newbook.ack == 1 %}
+                      <a class="dropdown-item alert-info" href="{% url 'ack_update' z=newbook.id %}">Requested Book '{{newbook.title}}'' is '{{newbook.status}}' by Admin</a>
+                    {% endif %}
                   {% endif %}
                   {% endfor %}
                 </div>
               </li> 
-              {% endif %}
               <li class="nav-item dropdown" title="Account">
                 <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -163,7 +173,7 @@
                     <i class="material-icons">store</i>
                   </div>
                   <p class="card-category">Visitors</p>
-                  <h3 class="card-title">34,245</h3>
+                  <h3 class="card-title">245</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -192,7 +202,7 @@
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa"></i>
                   </div>
                   <p class="card-category">Followers</p>
                   <h3 class="card-title">+245</h3>

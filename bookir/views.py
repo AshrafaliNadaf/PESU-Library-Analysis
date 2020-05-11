@@ -33,7 +33,7 @@ def bookir(request, a=0,d=0):
                     instance2.user_id = current_user.id
                 else:
                     user2 = Bookir.objects.get(pk=a)
-                    instance2.user_id = user2.id
+                    instance2.user_id = user2.user_id
                 instance2.save()
                 forms.save()
             return redirect('bookir_info')

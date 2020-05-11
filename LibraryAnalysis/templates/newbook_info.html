@@ -62,6 +62,12 @@
                         User
                       </th>
                       <th style="font-weight: bold;" class="text-left">
+                      Role
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
+                        USN
+                      </th>
+                      <th style="font-weight: bold;" class="text-left">
                         Status
                       </th>
                       <th style="font-weight: bold;" class="text-left">
@@ -80,6 +86,8 @@
                         <td class="text-left">{{newbook.price}}</td>
                         <td class="text-left">{{newbook.copies}}</td>
                         <td class="text-left">{{newbook.user.username}}</td>
+                        <td class="text-left">{{newbook.role}}</td>
+                        <td class="text-left">{{newbook.usn}}</td>
                         <td class="text-left">{{newbook.status}}</td>
                         <td class="td-actions text-center pull-center">
                           {% if newbook.status != "Approved"%}

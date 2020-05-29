@@ -31,8 +31,9 @@ def login(request):
 def home(request):
     user1 = request.session['username']
     type =  User.objects.get(id=user1)
+    # bk = Bookir.objects.all().annotate(Sum('bookissue'))
     obj = Newbook.objects.all()
-    return render(request, 'dashboard.html',{'type': type,'obj':obj})
+    return render(request, 'dashboard.html', {'type': type, 'obj': obj})
 
 #profile
 def profile(request):

@@ -3,7 +3,8 @@ from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Sum
-from  bookir.models import Bookir
+from bookir.models import Bookir
+from register.models import User
 from user.models import Department
 from visitors.models import Visitor
 # django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -13,7 +14,9 @@ from visitors.models import Visitor
 
 
 def report(request):
-        return  render(request,"report.html")
+    user1 = request.session['username']
+    type1 = User.objects.get(id=user1)
+    return render(request, "report.html", {'type': type1})
 
 def bookirrep(request):
     if request.method=='GET':

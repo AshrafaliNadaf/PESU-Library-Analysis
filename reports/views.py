@@ -78,9 +78,6 @@ def visitor_chart(request):
     dept1=Visitor.objects.values('students').aggregate(Sum('students'))
     dept2=Visitor.objects.values('staff').aggregate(Sum('staff'))
     dept3=Visitor.objects.values('visitors').aggregate(Sum('visitors'))
-    print(dept1)
-    print(dept2)
-    print(dept3)
     for x,y in dept1.items():
         data.append(y)
     for x,z in dept2.items():
@@ -102,8 +99,7 @@ def newbookchart(request):
 
     student=Newbook.objects.filter(role="Student").aggregate(Sum('copies'))
     staff=Newbook.objects.filter(role="Staff").aggregate(Sum('copies'))
-    print(student)
-    print(staff)
+   
     for x,y in student.items():
          data.append(y)
     for x,z in staff.items():

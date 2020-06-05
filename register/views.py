@@ -9,6 +9,8 @@ from django.contrib import messages
 # @login_required(login_url='login')
 
 def register(request, id=0,d=0):
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
     if d == 0:
         if request.method == "GET":
             if id == 0:
@@ -16,7 +18,7 @@ def register(request, id=0,d=0):
             else:
                 user = User.objects.get(pk=id)
                 forms = RegisterForms(instance=user)
-            return render(request, "register.html", {'form': forms})
+            return render(request, "register.html", {'form': forms,'type':type})
         else:
             if id == 0:
                 forms = RegisterForms(request.POST)

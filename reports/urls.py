@@ -15,7 +15,7 @@ urlpatterns = [
     path('visitor_chart/', views.visitor_chart, name='visitor_chart'),
 
     path('newbookrep/', views.newbookrep, name='newbookrep'),
-     path('newbookchart/', views.newbookchart, name='newbookchart'),
+    path('newbookchart/', views.newbookchart, name='newbookchart'),
 
 
 ]

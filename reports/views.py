@@ -8,21 +8,21 @@ from register.models import User
 from user.models import Department
 from visitors.models import Visitor
 from newbook.models import Newbook
-# django.views.generic.edit import CreateView, UpdateView, DeleteView
-# from django.core.urlresolvers import reverse_lazy
-# Create your views here.
 
-
-
+#main report
 def report(request):
     user1 = request.session['username']
-    type1 = User.objects.get(id=user1)
-    return render(request, "report.html", {'type': type1})
+    type = User.objects.get(id=user1)
+    return render(request, "report.html", {'type': type})
 
+#bookIR report 
 def bookirrep(request):
-    if request.method=='GET':
-        return render(request,"bookirrep.html")
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
+    if request.method == 'GET':
+        return render(request, "bookirrep.html", {'type': type})
 
+#chart
 def bookir_chart(request):
     labels=[]
     data=[]
@@ -38,6 +38,7 @@ def bookir_chart(request):
     }
     return JsonResponse(data)
 
+#chart1
 def bookir_chart1(request):
     labels=[]
     data=[]
@@ -53,6 +54,7 @@ def bookir_chart1(request):
     }
     return JsonResponse(data)
 
+#chart2
 def bookir_chart2(request):
     labels=[]
     data=[]
@@ -67,11 +69,18 @@ def bookir_chart2(request):
        'data':data
     }
     return JsonResponse(data)
-    
+<<<<<<< HEAD
+
+#visitors report
 def visitor_rep(request):
-    return render(request,"visitor_rep.html")
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
+    return render(request, "visitor_rep.html", {'type': type})
 
-
+=======
+    
+>>>>>>> 49737be936d596d38ee3a1705738bc500067fdc0
+#visitor chart
 def visitor_chart(request):
     labels=["Student","staff","visitor"]
     data=[]
@@ -93,6 +102,16 @@ def visitor_chart(request):
 def newbookrep(request):
     return render(request,"newbookrep.html")
 
+<<<<<<< HEAD
+#newbook report
+def newbookrep(request):
+    user1 = request.session['username']
+    type = User.objects.get(id=user1)
+    return render(request, "newbookrep.html", {'type': type})
+
+#newbook chart
+=======
+>>>>>>> 49737be936d596d38ee3a1705738bc500067fdc0
 def newbookchart(request):
     labels=['Student','staff']
     data=[]
@@ -115,15 +134,3 @@ def newbookchart(request):
 
 
 
-def ack_update(request, z=0):
-    Newbook.objects.filter(pk=z).update(ack=0)
-    return redirect('home')
-
-
-def mydetails(request):
-    ()
-
-def update_details(request):
-    ()
-
-# Create your views here.

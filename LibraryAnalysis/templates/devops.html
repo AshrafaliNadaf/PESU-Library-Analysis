@@ -37,9 +37,15 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
-          <li class="nav-item ">
+          {% comment %} <li class="nav-item ">
+          {% if type.usertype == 'admin' %}
+            <a href="{% url 'login' %}" class="nav-link"> Logout</a>  
+          {% elif type.usertype == 'user' %}
+            <a href="{% url 'login' %}" class="nav-link"> Logout</a>
+          {% else %}
             <a href="{% url 'login' %}" class="nav-link"> Login</a>
-          </li>
+          {% endif %}
+          </li> {% endcomment %}
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Contact for any Query" data-placement="bottom" href="callto:99808 33991" target="_blank">
               <i class="fa fa-phone"></i>

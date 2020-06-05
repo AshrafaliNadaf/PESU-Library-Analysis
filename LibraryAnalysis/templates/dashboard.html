@@ -138,6 +138,7 @@
                   {% endif %}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'login' %}" >Log out</a>
+                  
                 </div>
               </li>
             </ul>
@@ -150,12 +151,12 @@
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
+                <div class="card-header card-header-success card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
+                    <i class="material-icons">library_books</i>
                   </div>
-                  <p class="card-category">BookIssue</p>
-                  <h3 class="card-title">700
+                  <p class="card-category">Book Transaction</p>
+                  <h3 class="card-title">100
                     <small></small>
                   </h3>
                 </div>	
@@ -168,9 +169,9 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
+                <div class="card-header card-header-primary card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">store</i>
+                    <i class="material-icons">person</i>
                   </div>
                   <p class="card-category">Visitors</p>
                   <h3 class="card-title">245</h3>
@@ -184,27 +185,27 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
+                <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
+                    <i class="material-icons">store</i>
                   </div>
-                  <p class="card-category">New Book Issue</p>
-                  <h3 class="card-title">75</h3>
+                  <p class="card-category">No.of Library</p>
+                  <h3 class="card-title">7</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">local_offer</i> On Demand Request
+                    <i class="material-icons">local_offer</i> users
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            {% comment %} <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
                     <i class="fa fa"></i>
                   </div>
-                  <p class="card-category">Followers</p>
+                  <p class="card-category">Book Requested</p>
                   <h3 class="card-title">+245</h3>
                 </div>
                 <div class="card-footer">
@@ -213,7 +214,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> {% endcomment %}
           </div>
           <div class="row">
             <div class="col-md-4">
@@ -222,9 +223,9 @@
                   <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
+                  <h4 class="card-title">Book Issue/Return/Renew</h4>
                   <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                    {% comment %} <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p> {% endcomment %}
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -239,8 +240,8 @@
                   <div class="ct-chart" id="websiteViewsChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">Visitors</h4>
+                  {% comment %} <p class="card-category">Last Campaign Performance</p> {% endcomment %}
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -255,8 +256,8 @@
                   <div class="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Completed Tasks</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">New Book isue</h4>
+                  {% comment %} <p class="card-category">Last Campaign Performance</p> {% endcomment %}
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -267,7 +268,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-6 col-md-12">
+            {% comment %} <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-tabs card-header-primary">
                   <div class="nav-tabs-navigation">
@@ -511,8 +512,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
+             </div> {% endcomment %}
+            {% comment %}<div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
                   <h4 class="card-title">Employees Stats</h4>
@@ -556,7 +557,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
       <footer class="footer">

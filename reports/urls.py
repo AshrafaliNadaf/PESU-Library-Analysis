@@ -10,8 +10,12 @@ urlpatterns = [
     path('bookir_chart/', views.bookir_chart, name='bookir_chart'),
     path('bookir_chart1/', views.bookir_chart1, name='bookir_chart1'),
     path('bookir_chart2/', views.bookir_chart2, name='bookir_chart2'),
+
     path('visitor_rep/', views.visitor_rep, name='visitor_rep'),
     path('visitor_chart/', views.visitor_chart, name='visitor_chart'),
+
+    path('newbookrep/', views.newbookrep, name='newbookrep'),
+    path('newbookchart/', views.newbookchart, name='newbookchart'),
 
 
 ]

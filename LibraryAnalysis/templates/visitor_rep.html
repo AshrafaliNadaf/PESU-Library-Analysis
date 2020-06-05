@@ -6,7 +6,7 @@
   <div class="content" >
     <div class="container-fluid pull-right">        
       <div class="row"> 
-        <div class="col-md-6 ">  
+        <div class="col-md-8 ">  
           <div class="card">
             <div class="card-body"> 
               <canvas id="visitor_chart" data-url="{% url 'visitor_chart' %}"></canvas>
@@ -49,6 +49,7 @@
                
               }]          
             },
+            
            options: { 
               scales: { 
                 {% comment %} yAxes: [{ 
@@ -62,6 +63,9 @@
                    }
             }]  {% endcomment %}
           },
+          
+          
+                  
           
         } 
       });   

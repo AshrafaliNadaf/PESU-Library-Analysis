@@ -12,7 +12,6 @@ from visitors.models import Visitor
 
 
 #login
-
 def login(request):
     if request.method == "POST":
         usid = request.POST.get('username')

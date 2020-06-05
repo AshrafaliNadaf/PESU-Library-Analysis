@@ -58,10 +58,8 @@ def bookir_chart1(request):
 def bookir_chart2(request):
     labels=[]
     data=[]
-   
     qury=Department.objects.values("deptname")
     dept=Bookir.objects.values('deptname_id').annotate(Sum('bookrenew'))
-    
     for entry in dept:
         data.append(entry['bookrenew__sum'])
     for val in qury:
@@ -75,27 +73,44 @@ def bookir_chart2(request):
 #visitor chart
 def visitor_chart(request):
     labels=["Student","staff","visitor"]
-    data=[] 
-    dept1=Visitor.objects.values('students').annotate(Sum('students'))
-    dept2=Visitor.objects.values('staff').annotate(Sum('staff'))
-    dept3=Visitor.objects.values('visitors').annotate(Sum('visitors'))
-    print(dept1)
-    print(dept2)
-    for entry in dept1:
-        data.append(entry['students__sum'])
-    for entry in dept2:
-        data.append(entry['staff__sum'])
-    for entry in dept3:
-        data.append(entry['visitors__sum'])
+    data=[]
+    dept1=Visitor.objects.values('students').aggregate(Sum('students'))
+    dept2=Visitor.objects.values('staff').aggregate(Sum('staff'))
+    dept3=Visitor.objects.values('visitors').aggregate(Sum('visitors'))
+    for x,y in dept1.items():
+        data.append(y)
+    for x,z in dept2.items():
+        data.append(z)
+    for x,w in dept3.items():
+        data.append(w)
     data={
        'labels':labels,
        'data':data
     }
     return JsonResponse(data)
 
-#visitors report
-def visitor_rep(request):
-    user1 = request.session['username']
-    type = User.objects.get(id=user1)
-    return render(request, "visitor_rep.html", {'type': type})
+def newbookrep(request):
+    return render(request,"newbookrep.html")
+
+def newbookchart(request):
+    labels=['Student','staff']
+    data=[]
+
+    student=Newbook.objects.filter(role="Student").aggregate(Sum('copies'))
+    staff=Newbook.objects.filter(role="Staff").aggregate(Sum('copies'))
+   
+    for x,y in student.items():
+         data.append(y)
+    for x,z in staff.items():
+         data.append(z)
+
+
+    data={
+        'labels':labels,
+        'data':data
+    }
+    return JsonResponse(data)
+
+
+
 

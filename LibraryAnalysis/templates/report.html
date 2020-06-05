@@ -118,8 +118,10 @@
                     {% csrf_token %}
                     <center>
                     <a href="{% url 'bookirrep' %}" class="btn btn-success" >Book Isuue/Return Report</a>
-                    <a href="{% url 'visitor_rep' %}" class="btn btn-success" >Visitor Report</a> 
-                  </center>
+                    <a href="{% url 'visitor_rep' %}" class="btn btn-success" >Visitor Report</a>
+                    <a href="{% url 'newbookrep' %}" class="btn btn-success" >New Book request</a>
+                    
+                    </center>
                   </form>  
                 </div>
               </div>

@@ -6,7 +6,7 @@
   <div class="content" >
     <div class="container-fluid pull-right">        
       <div class="row"> 
-        <div class="col-md-6 ">  
+        <div class="col-md-8 ">  
           <div class="card">
             <div class="card-body"> 
               <canvas id="visitor_chart" data-url="{% url 'visitor_chart' %}"></canvas>
@@ -39,23 +39,33 @@
       var ctx = $populationChart[0].getContext("2d");
 
           new Chart(ctx, {
-            type: 'bar',
+            type: 'doughnut',
             data: {
               labels: data.labels,
               datasets: [{
                 label: 'Visitor Information',
-                backgroundColor: 'purple',
+                backgroundColor: ["#a3c7c9","#889d9e","#647678"],
                 data: data.data
+               
               }]          
             },
+            
            options: { 
               scales: { 
-                yAxes: [{ 
+                {% comment %} yAxes: [{ 
                   ticks: { 
                     beginAtZero: true 
-                } 
-            }] 
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'No. of Visitors'
+               
+                   }
+            }]  {% endcomment %}
           },
+          
+          
+                  
           
         } 
       });   

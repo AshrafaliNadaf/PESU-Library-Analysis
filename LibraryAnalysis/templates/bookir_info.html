@@ -53,6 +53,9 @@
                       <th style="font-weight: bold;" class="text-center">
                         Renewed book count
                       </th>
+                      <th style="font-weight: bold;" class="text-center">
+                        Fine collected
+                      </th>
                       {% if type.usertype == "admin" %}
                       <th style="font-weight: bold;" class="text-center">
                         User
@@ -71,6 +74,7 @@
                         <td class="text-center">{{user.bookissue}}</td> 
                         <td class="text-center">{{user.bookreturn}}</td> 
                         <td class="text-center">{{user.bookrenew}}</td>
+                        <td class="text-center">{{user.fine}}</td>
                         {% if type.usertype == "admin" %}
                         <td class="text-center">{{user.user.username}}</td>
                         {% endif %}

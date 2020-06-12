@@ -11,3 +11,4 @@ class Bookir(models.Model):
     bookissue = models.PositiveIntegerField(default=0)
     bookreturn = models.PositiveIntegerField(default=0)
     bookrenew = models.PositiveIntegerField(default=0)
+    fine = models.PositiveIntegerField(default=0)

@@ -66,7 +66,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="{% url 'profile' %}">Profile</a>
+            <a class="navbar-brand" href="{% url 'profile' %}">Profiles</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -93,7 +93,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                 {% if type.usertype == "admin" %}
-                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profiles</a>
                   {% endif %}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'login' %}">Log out</a>
@@ -124,23 +124,7 @@
             {% endif %}
           </div> 
           <div class="row" style="padding:50px">
-            <div class="col-md-4">
-              <div class="card card-profile">
-                <div class="card-avatar">
-                  <a href="#">
-                    <img class="img" src="/static/img/faces/Subhash_B.jpg" />
-                  </a>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title text-info" style="text-bold">Subhash Reddy B</h4>
-                  <h6 class="card-category text-gray">Librarian, PES UNIVERSITY</h6>
-                  <p class="card-description">
-                  <a type="button" href="{% url 'devops' %}" class="btn btn-outline-info btn-round">About Us</a> 
-                  </p>
-                </div>
-                </div>
-               </div> 
-               <div class="column" >
+            <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
                 <h4 class="card-title">Users:</h4>
@@ -189,16 +173,16 @@
                   </form> 
                 </div>
               </div>
-              </div>
             </div>
           </div>
         </div>
+        {% endblock content %}
         <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
             <ul>
               <li>
-                <a href="">
+                <a href="{% url 'devops' %}">
                   About us
                 </a>
               </li>
@@ -209,11 +193,10 @@
             <script>
               document.write(new Date().getFullYear())
             </script>, made with <i class="material-icons">favorite</i> by
-            <a href="#" target="_blank">KAK Team</a> for PESU Library.
+            <a href="#" target="_blank">KKA Team</a> for PESU Library.
           </div>
         </div>
       </footer>
-        {% endblock content %}
       </div>
   </div>
   <!--   Core JS Files   -->

@@ -107,6 +107,7 @@
                     {% if type.usertype == "admin" %}
                       {% if newbook.status == "" %}
                         <a class="dropdown-item alert-info" href="{% url 'newbook_info' %}">New Book "{{newbook.title}}" Requested by {{newbook.user.username}}</a>
+                        
                       {% endif %}
                     {% else %}
                       {% if newbook.ack == 1 %}
@@ -125,7 +126,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   {% if type.usertype == "admin" %}
-                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profiles</a>
                   {% endif %}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'login' %}" >Log out</a>
@@ -248,7 +249,7 @@
           <nav class="float-left">
             <ul>
               <li>
-                <a href="">
+                <a href="{% url 'devops' %}">
                   About us
                 </a>
               </li>

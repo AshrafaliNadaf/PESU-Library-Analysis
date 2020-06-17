@@ -69,7 +69,6 @@ def bookir_chart2(request):
        'data':data
     }
     return JsonResponse(data)
-<<<<<<< HEAD
 
 #visitors report
 def visitor_rep(request):
@@ -77,9 +76,6 @@ def visitor_rep(request):
     type = User.objects.get(id=user1)
     return render(request, "visitor_rep.html", {'type': type})
 
-=======
-    
->>>>>>> 49737be936d596d38ee3a1705738bc500067fdc0
 #visitor chart
 def visitor_chart(request):
     labels=["Student","staff","visitor"]
@@ -102,7 +98,6 @@ def visitor_chart(request):
 def newbookrep(request):
     return render(request,"newbookrep.html")
 
-<<<<<<< HEAD
 #newbook report
 def newbookrep(request):
     user1 = request.session['username']
@@ -110,8 +105,6 @@ def newbookrep(request):
     return render(request, "newbookrep.html", {'type': type})
 
 #newbook chart
-=======
->>>>>>> 49737be936d596d38ee3a1705738bc500067fdc0
 def newbookchart(request):
     labels=['Student','staff']
     data=[]

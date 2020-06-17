@@ -9,6 +9,9 @@ from django.db.models import Sum
 from bookir.models import Bookir
 from user.models import Department
 from visitors.models import Visitor
+from django.db.models import Count
+from django.db.models import Sum
+
 
 
 #login
@@ -32,7 +35,11 @@ def home(request):
     user1 = request.session['username']
     type = User.objects.get(id=user1)
     obj = Newbook.objects.all()
-    return render(request, 'dashboard.html', {'type': type, 'obj': obj})
+    visitorCount = Visitor.objects.all().aggregate(a=Sum('students') + Sum('staff') + Sum('visitors'))
+    count = visitorCount.get('a')
+    libNo = User.objects.all().count() - 1
+    bookTrans = Bookir.objects.all().count()
+    return render(request, 'dashboard.html', {'type': type, 'obj': obj, 'count':count, 'libNo':libNo, 'bookTrans':bookTrans})
 
 #profile
 def profile(request):
@@ -52,13 +59,6 @@ def ack_update(request, z=0):
     Newbook.objects.filter(pk=z).update(ack=0)
     return redirect('home')
 
-
-# def logout(request):
-#     try:
-#         del request.session['username']
-#     except KeyError:
-#         pass
-#     return redirect('login')
 
 def mydetails(request):
     ()

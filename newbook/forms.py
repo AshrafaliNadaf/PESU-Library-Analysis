@@ -18,3 +18,5 @@ class newbookForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(newbookForm, self).__init__(*args, **kwargs)
         self.fields['price'].required = False
+        self.fields['isbn'].required = False
+        

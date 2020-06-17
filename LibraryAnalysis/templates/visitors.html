@@ -123,7 +123,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   {% if type.usertype == "admin" %}
-                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profiles</a>
                   {% endif %}
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'login' %}">Log out</a>
@@ -180,6 +180,26 @@
         </div>
       </div>
       {% endblock content %}
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="{% url 'devops' %}">
+                  About us
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="#" target="_blank">KKA Team</a> for PESU Library.
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
     <!--   Core JS Files   -->

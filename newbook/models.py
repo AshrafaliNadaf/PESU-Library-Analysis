@@ -9,7 +9,7 @@ class Newbook(models.Model):
    authorname = models.CharField(max_length=300)
    title = models.CharField(max_length=300)
    publisher = models.CharField(max_length=300)
-   isbn = models.CharField(max_length=100)
+   isbn = models.CharField(max_length=100, default=0)
    edition = models.PositiveIntegerField()
    price = models.PositiveIntegerField(default=0)
    copies = models.PositiveIntegerField(default=1)

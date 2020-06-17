@@ -9,12 +9,13 @@ class bookirForm(forms.ModelForm):
     date = forms.DateField(widget=DateInput)
     class Meta:
         model=Bookir
-        fields=("deptname","date","bookissue","bookreturn","bookrenew")
+        fields=("deptname","date","bookissue","bookreturn","bookrenew","fine")
         labels = { 
             'deptname': '',
             'bookissue': 'NO.Of Books Issue',
             'bookreturn': "NO.Of Books Return",
-            'bookrenew': 'NO.Of Books Renewed'
+            'bookrenew': 'NO.Of Books Renewed',
+            'fine':"Fine collected"
         }
           
     def __init__(self,*args,**kwargs):

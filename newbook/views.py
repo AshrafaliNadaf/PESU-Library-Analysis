@@ -47,5 +47,3 @@ def newbook_update(request,id=0,x=0):
         messages.warning(request, f'Book " {bookname.title} " Rejected.')
     return redirect('newbook_info')
 
-
-

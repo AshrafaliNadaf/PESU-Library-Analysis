@@ -96,10 +96,6 @@ def visitor_chart(request):
     return JsonResponse(data)
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8dcee5e839c7579184471b5a737989feb40c90b6
 #newbook report
 def newbookrep(request):
     user1 = request.session['username']

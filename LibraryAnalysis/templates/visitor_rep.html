@@ -39,7 +39,7 @@
       var ctx = $populationChart[0].getContext("2d");
 
           new Chart(ctx, {
-            type: 'doughnut',
+            type: 'bar',
             data: {
               labels: data.labels,
               datasets: [{
@@ -52,7 +52,7 @@
             
            options: { 
               scales: { 
-                {% comment %} yAxes: [{ 
+                 yAxes: [{ 
                   ticks: { 
                     beginAtZero: true 
                 },
@@ -61,7 +61,7 @@
                     labelString: 'No. of Visitors'
                
                    }
-            }]  {% endcomment %}
+            }]  
           },
           
           

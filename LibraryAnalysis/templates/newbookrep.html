@@ -40,12 +40,12 @@
       var ctx = $populationChart[0].getContext("2d");
 
           new Chart(ctx, {
-            type: 'pie',
+            type: 'bar',
             data: {
               labels: data.labels,
               datasets: [{
                 label: 'New book Request',
-               backgroundColor: ["#e67f83","#f0b8b8"],
+               backgroundColor: ["#608552","#855264"],
                 data: data.data
               }]          
             },
@@ -62,7 +62,7 @@
                         }
                       }] 
                     },
-              plugins: {
+              {% comment %} plugins: {
                   datalabels: {
                       formatter: (value, ctx) => {
                         let datasets = ctx.chart.data.datasets;
@@ -76,7 +76,7 @@
                         },
                          color: '#fff',
                       }
-                    }
+                    } {% endcomment %}
           
                      } 
 
@@ -86,9 +86,5 @@
     } 
     
   </script> 
-<<<<<<< HEAD
-{% endblock %}
-=======
-{% endblock content %}
->>>>>>> 8dcee5e839c7579184471b5a737989feb40c90b6
+{% endblock content%}
 

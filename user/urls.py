@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('', views.login, name='login'),
     path('home/', views.home, name='home'),
+    path('logout/', views.logout, name='logout'),
     path('profile/', views.profile, name='profile'),
     path('devops/', views.devops, name='devops'),
     path('<int:z>/', views.ack_update, name='ack_update'),

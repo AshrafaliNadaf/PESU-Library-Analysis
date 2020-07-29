@@ -4,21 +4,23 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Sum
 from bookir.models import Bookir
-from register.models import User
+from register.models import extendedUser
 from user.models import Department
 from visitors.models import Visitor
 from newbook.models import Newbook
 
 #main report
+@login_required(login_url='login')
 def report(request):
-    user1 = request.session['username']
-    type = User.objects.get(id=user1)
+    #user1 = request.session['username']
+    type = extendedUser.objects.get(user=request.user)
     return render(request, "report.html", {'type': type})
 
-#bookIR report 
+#bookIR report
+@login_required(login_url='login')
 def bookirrep(request):
-    user1 = request.session['username']
-    type = User.objects.get(id=user1)
+    #user1 = request.session['username']
+    type = extendedUser.objects.get(user=request.user)
     if request.method == 'GET':
         return render(request, "bookirrep.html", {'type': type})
 
@@ -71,9 +73,10 @@ def bookir_chart2(request):
     return JsonResponse(data)
 
 #visitors report
+@login_required(login_url='login')
 def visitor_rep(request):
-    user1 = request.session['username']
-    type = User.objects.get(id=user1)
+    #user1 = request.session['username']
+    type = extendedUser.objects.get(user=request.user)
     return render(request, "visitor_rep.html", {'type': type})
 
 #visitor chart

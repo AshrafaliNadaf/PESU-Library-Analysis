@@ -1,6 +1,7 @@
 from django.db import models
 from user.models import Department
-from register.models import User
+from django.contrib.auth.models import User
+from django.contrib import auth
 # Create your models here.
 
 

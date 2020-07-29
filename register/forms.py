@@ -1,10 +1,11 @@
 from django import forms
-from .models import User
+from .models import extendedUser,User
 
 class RegisterForms(forms.ModelForm):
     class Meta:
-        model=User
-        fields=("usertype","username","password","contactnum","email")
+        model = extendedUser
+        fields='__all__'
+        #("usertype","username","password","contactnum","email")
         labels = {
             'usertype': 'Type of User',
             'username': 'User Name',

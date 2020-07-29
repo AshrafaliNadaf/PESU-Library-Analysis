@@ -1,5 +1,5 @@
 from django.db import models
-from register.models import User
+from register.models import extendedUser
 from datetime import datetime
 
 class Department(models.Model):

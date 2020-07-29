@@ -15,11 +15,11 @@
           <div class="card-body">
             <form  method="post" autocomplete="off">
               {% csrf_token %}
-                {{form.usertype|as_crispy_field}}
-                {{form.username|as_crispy_field}}
-                {{form.password|as_crispy_field}}
-                {{form.contactnum|as_crispy_field}}
-                {{form.email|as_crispy_field}}     
+                {{context.usertype|as_crispy_field}}
+                {{context.username|as_crispy_field}}
+                {{context.password|as_crispy_field}}
+                {{context.contactnum|as_crispy_field}}
+                {{context.email|as_crispy_field}}     
               <button type="submit" class="btn btn-success pull-right">Submit</button>
             </form>  
           </div>

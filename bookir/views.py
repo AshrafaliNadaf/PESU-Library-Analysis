@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from bookir.forms import  bookirForm
-from .models import User, Bookir
+from .models import Bookir
+from register.models import extendedUser
+from django.contrib.auth.models import User
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 # Create your views here.
-
+@login_required(login_url='login')
 def bookir(request, a=0,d=0):
-    user1 = request.session['username']
-    type1 = User.objects.get(id=user1)
+    #user1 = request.session['username']
+    type1 = extendedUser.objects.get(user=request.user)
     if d==0:
         if request.method == "GET":
             if a == 0:
@@ -26,8 +29,8 @@ def bookir(request, a=0,d=0):
                 forms = bookirForm(request.POST, instance=user2)
             if forms.is_valid():
                 messages.success(request, f'Data Updated.')
-                userid = request.session['username']
-                current_user = User.objects.get(id=userid)
+                #userid = request.session['username']
+                current_user = extendedUser.objects.get(user=request.user)
                 instance2 = forms.save(commit=False)
                 if current_user.usertype == "user":
                     instance2.user_id = current_user.id
@@ -43,9 +46,10 @@ def bookir(request, a=0,d=0):
         return redirect('bookir_info')
 
 
+@login_required(login_url='login')
 def bookir_info(request):
-    user1 = request.session['username']
-    type1 = User.objects.get(id=user1)
+    #user1 = request.session['username']
+    type1 = extendedUser.objects.get(user=request.user)
     if type1.usertype=="user":
         obj= Bookir.objects.filter(user=type1.id)
     else:
